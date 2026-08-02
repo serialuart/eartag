@@ -173,7 +173,6 @@ class EartagFileCover:
                 data_stream.close()
                 del data_stream
                 data_bytes.unref()
-                del data_bytes
 
                 return out
 
