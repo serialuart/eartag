@@ -8,37 +8,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eartag main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/eartag/-/issues\n"
-"POT-Creation-Date: 2025-07-12 13:02+0000\n"
-"PO-Revision-Date: 2025-07-16 09:35+0200\n"
+"POT-Creation-Date: 2026-08-02 07:21+0000\n"
+"PO-Revision-Date: 2026-08-02 16:52+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.8\n"
 
 #. TRANSLATORS: If possible, do not translate the name of the program (Ear Tag). Transliteration (re-writing to fit another alphabet) is acceptable.
 #. Set up window title and file info label
-#: src/main.py:145 data/app.drey.EarTag.desktop.in:3
-#: data/app.drey.EarTag.metainfo.xml.in:4 src/window.py:123 src/window.py:364
-#: src/window.py:376 src/ui/window.blp:262 src/ui/nofile.blp:11
+#: src/main.py:146 data/app.drey.EarTag.desktop.in:2
+#: data/app.drey.EarTag.metainfo.xml.in:4 src/window.py:123 src/window.py:362
+#: src/window.py:374 src/ui/window.blp:262 src/ui/nofile.blp:11
 msgid "Ear Tag"
 msgstr "Ear Tag"
 
 #. TRANSLATORS: Add your name/nickname here
-#: src/main.py:155 src/main.py:157
+#: src/main.py:156 src/main.py:158
 msgid "translator-credits"
 msgstr "Martin Srebotnjak <miles@filmsi.net>"
 
-#: data/app.drey.EarTag.desktop.in:4
+#: data/app.drey.EarTag.desktop.in:3
 msgid "Tag Editor"
 msgstr "Urejevalnik značk"
 
 #. TRANSLATORS: App description.
-#: data/app.drey.EarTag.desktop.in:5 data/app.drey.EarTag.metainfo.xml.in:6
+#: data/app.drey.EarTag.desktop.in:4 data/app.drey.EarTag.metainfo.xml.in:6
 msgid "Edit audio file tags"
 msgstr "Urejajte značke zvočnih datotek"
 
@@ -46,7 +46,12 @@ msgstr "Urejajte značke zvočnih datotek"
 msgid "music;audio;tag;tagging;tagger;"
 msgstr "glasba;zvok;audio;avdio;tag;značka;označevanje;tagger;označevalnik;"
 
-#: data/app.drey.EarTag.metainfo.xml.in:104
+#: data/app.drey.EarTag.metainfo.xml.in:11
+#: data/app.drey.EarTag.metainfo.xml.in:13
+msgid "knuxify"
+msgstr "knuxify"
+
+#: data/app.drey.EarTag.metainfo.xml.in:112
 msgid ""
 "Ear Tag is a simple audio file tag editor. It is primarily geared towards "
 "making quick edits or bulk-editing tracks in albums/EPs. Unlike other "
@@ -58,23 +63,23 @@ msgstr ""
 "razliko od drugih programov za označevanje Ear Tag od uporabnika ne zahteva, "
 "da nastavi mapo glasbene knjižnice. Z njim lahko:"
 
-#: data/app.drey.EarTag.metainfo.xml.in:106
+#: data/app.drey.EarTag.metainfo.xml.in:114
 msgid "Edit tags of MP3, WAV, M4A, FLAC, OGG and WMA files"
 msgstr "Urejajte značke datotek MP3, WAV, M4A, FLAC, OGG in WMA"
 
-#: data/app.drey.EarTag.metainfo.xml.in:107
+#: data/app.drey.EarTag.metainfo.xml.in:115
 msgid "Modify metadata of multiple files at once"
 msgstr "Spremenite metapodatke več datotek hkrati"
 
-#: data/app.drey.EarTag.metainfo.xml.in:108
+#: data/app.drey.EarTag.metainfo.xml.in:116
 msgid "Rename files using information from present tags"
 msgstr "Preimenujte datoteke z informacijami iz sedanjih značk"
 
-#: data/app.drey.EarTag.metainfo.xml.in:109
+#: data/app.drey.EarTag.metainfo.xml.in:117
 msgid "Identify files using AcoustID"
 msgstr "Prepoznavate datoteke s programom AcoustID"
 
-#: data/app.drey.EarTag.metainfo.xml.in:111
+#: data/app.drey.EarTag.metainfo.xml.in:119
 msgid "Network access is only used for the \"Identify selected files\" option."
 msgstr ""
 "Dostop do omrežja se uporablja samo za možnost »Prepoznavanje izbranih "
@@ -96,7 +101,7 @@ msgstr "Več podrobnosti"
 msgid "No supported files found in opened folder"
 msgstr "V odprti mapi ni podprtih datotek"
 
-#: src/window.py:322
+#: src/window.py:320
 #, python-brace-format
 msgid "Saved changes to 1 file"
 msgid_plural "Saved changes to {n} files"
@@ -105,53 +110,53 @@ msgstr[1] "Spremembe shranjene v {n} datoteko"
 msgstr[2] "Spremembe shranjene v {n} datoteki"
 msgstr[3] "Spremembe shranjene v {n} datoteke"
 
-#: src/window.py:331
+#: src/window.py:329
 msgid "Some of the opened files are read-only; changes cannot be saved"
 msgstr ""
 "Nekatere odprte datoteke so samo za branje; sprememb ni mogoče shraniti"
 
-#: src/window.py:336
+#: src/window.py:334
 msgid "Maximum folder depth reached, some files may not be loaded"
 msgstr ""
 "Dosežena je največja globina mape, nekatere datoteke morda ne bodo naložene"
 
-#: src/window.py:347
+#: src/window.py:345
 msgid "Unselect all files"
 msgstr "Prekliči izbor vseh datotek"
 
-#: src/window.py:350 src/ui/window.blp:227
+#: src/window.py:348 src/ui/window.blp:227
 msgid "Select all files"
 msgstr "Izberi vse datoteke"
 
 #. TRANSLATORS: Placeholder for file path when multiple files are selected.
 #. Shows up in the titlebar of the application.
-#: src/window.py:385 src/fileview.py:753
+#: src/window.py:383 src/fileview.py:753
 msgid "(Multiple files selected)"
 msgstr "(Izbranih je več datotek)"
 
 #. : TRANSLATORS: Title of the popup for opening a file
-#: src/window.py:470 src/ui/nofile.blp:24
+#: src/window.py:468 src/ui/nofile.blp:24
 msgid "Open File"
 msgstr "Odpri datoteko"
 
-#: src/window.py:472
+#: src/window.py:470
 msgid "Add File"
 msgstr "Dodaj datoteko"
 
-#: src/window.py:478 src/ui/nofile.blp:36
+#: src/window.py:476 src/ui/nofile.blp:36
 msgid "Open Folder"
 msgstr "Odpri mapo"
 
-#: src/window.py:528
+#: src/window.py:526
 msgid "Some of the opened files have invalid values; cannot save"
 msgstr ""
 "Nekatere odprte datoteke imajo neveljavne vrednosti; ni mogoče shraniti"
 
-#: src/window.py:659
+#: src/window.py:656
 msgid "No files selected"
 msgstr "Izbrana ni nobena datoteka"
 
-#: src/window.py:665
+#: src/window.py:662
 #, python-brace-format
 msgid "1 file selected"
 msgid_plural "{n} files selected"
@@ -160,7 +165,7 @@ msgstr[1] "{n} izbrana datoteka"
 msgstr[2] "{n} izbrani datoteki"
 msgstr[3] "{n} izbrane datoteke"
 
-#: src/window.py:738
+#: src/window.py:735
 #, python-brace-format
 msgid "Undid changes in 1 file"
 msgid_plural "Undid changes in {n} files"
@@ -169,11 +174,11 @@ msgstr[1] "Razveljavljene spremembe v {n} datoteki"
 msgstr[2] "Razveljavljene spremembe v {n} datotekah"
 msgstr[3] "Razveljavljene spremembe v {n} datotekah"
 
-#: src/window.py:743
+#: src/window.py:740
 msgid "Redo"
 msgstr "Ponovno uveljavi"
 
-#: src/window.py:771
+#: src/window.py:768
 #, python-brace-format
 msgid "Redid changes in 1 file"
 msgid_plural "Redid changes in {n} files"
@@ -182,7 +187,7 @@ msgstr[1] "Ponovljene spremembe v {n} datoteki"
 msgstr[2] "Ponovljene spremembe v {n} datotekah"
 msgstr[3] "Ponovljene spremembe v {n} datotekah"
 
-#: src/window.py:817
+#: src/window.py:814
 #, python-brace-format
 msgid "Removed tags from 1 file"
 msgid_plural "Removed tags from {n} files"
@@ -191,11 +196,11 @@ msgstr[1] "Odstranjene značke iz {n} datoteke"
 msgstr[2] "Odstranjene značke iz {n} datotek"
 msgstr[3] "Odstranjene značke iz {n} datotek"
 
-#: src/window.py:822 src/fileview.py:302
+#: src/window.py:819 src/fileview.py:302
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/window.py:848
+#: src/window.py:845
 #, python-brace-format
 msgid "Undid tag removal in 1 file"
 msgid_plural "Undid tag removal in {n} files"
@@ -569,7 +574,7 @@ msgid "(multiple values)"
 msgstr "(več vrednosti)"
 
 #. TRANSLATORS: Placeholder for file sidebar items with no title set
-#: src/filelist.py:192
+#: src/filelist.py:191
 msgid "(No title)"
 msgstr "(Brez naslova)"
 
@@ -585,39 +590,39 @@ msgstr "Datoteka ima neshranjene spremembe"
 msgid "Remove from list"
 msgstr "Odstrani s seznama"
 
-#: src/dialogs.py:106
+#: src/dialogs.py:114
 msgid "Failed to Load Files"
 msgstr "Datotek ni bilo možno naložiti"
 
-#: src/dialogs.py:107
+#: src/dialogs.py:115
 msgid "Some files could not be loaded."
 msgstr "Nekaterih datotek ni bilo mogoče naložiti."
 
-#: src/dialogs.py:110
+#: src/dialogs.py:118
 msgid "Failed to Rename Files"
 msgstr "Preimenovanje datoteke ni uspelo"
 
-#: src/dialogs.py:111
+#: src/dialogs.py:119
 msgid "Some files could not be renamed."
 msgstr "Nekaterih datotek ni bilo mogoče preimenovati."
 
-#: src/dialogs.py:114
+#: src/dialogs.py:122
 msgid "Failed to Save Files"
 msgstr "Datotek ni bilo mogoče shraniti"
 
-#: src/dialogs.py:115
+#: src/dialogs.py:123
 msgid "Some files could not be saved."
 msgstr "Nekaterih datotek ni bilo mogoče shraniti."
 
-#: src/dialogs.py:118
+#: src/dialogs.py:126
 msgid "An Error Has Occured"
 msgstr "Prišlo je do napake"
 
-#: src/dialogs.py:119
+#: src/dialogs.py:127
 msgid "An internal error has occured."
 msgstr "Prišlo je do notranje napake."
 
-#: src/dialogs.py:125
+#: src/dialogs.py:133
 msgid ""
 "Please copy the logs below and <a href=\"https://gitlab.gnome.org/World/"
 "eartag/-/issues/new\">submit an issue report</a>."
@@ -625,7 +630,7 @@ msgstr ""
 "Kopirajte spodnje dnevnike in <a href=\"https://gitlab.gnome.org/World/"
 "eartag/-/issues/new\">pošljite poročilo o težavi</a>."
 
-#: src/dialogs.py:139
+#: src/dialogs.py:147
 msgid "Copied error log to clipboard"
 msgstr "Zapisnik napak kopiran v odložišče"
 
@@ -807,13 +812,13 @@ msgstr "Prekliči izbor mape"
 
 #: src/ui/rename.blp:148
 msgid ""
-"For a list of available placeholders, see the <a href=\"https://gitlab.gnome."
-"org/World/eartag/-/blob/main/src/backends/README.md#available-tags\">list of "
-"available tags</a>."
+"For a list of available placeholders, see the <a href=\"https://"
+"gitlab.gnome.org/World/eartag/-/blob/main/src/backends/README.md#available-"
+"tags\">list of available tags</a>."
 msgstr ""
-"Če si želite ogledati seznam ograd, ki so na voljo, si oglejte <a href="
-"\"https://gitlab.gnome.org/World/eartag/-/blob/main/src/backends/README."
-"md#available-tags\">seznam razpoložljivih značk</a>."
+"Če si želite ogledati seznam ograd, ki so na voljo, si oglejte <a "
+"href=\"https://gitlab.gnome.org/World/eartag/-/blob/main/src/backends/"
+"README.md#available-tags\">seznam razpoložljivih značk</a>."
 
 #. TRANSLATORS: {extracted} is a placeholder for the number
 #. of tracks the tags were succesfully extracted for.
@@ -905,13 +910,13 @@ msgstr "Identificiraj"
 
 #: src/ui/identify/identify.blp:72
 msgid ""
-"Track information is provided by <a href=\"https://musicbrainz.org"
-"\">Musicbrainz</a>. Files without metadata are identified using the <a href="
-"\"https://acoustid.org\">AcoustID</a> service."
+"Track information is provided by <a href=\"https://"
+"musicbrainz.org\">Musicbrainz</a>. Files without metadata are identified "
+"using the <a href=\"https://acoustid.org\">AcoustID</a> service."
 msgstr ""
-"Informacije o skladbi zagotavlja <a href=\"https://musicbrainz.org"
-"\">Musicbrainz</a>. Datoteke brez metapodatkov se identificirajo s "
-"storitvijo <a href=\"https://acoustid.org\">AcoustID</a> ."
+"Informacije o skladbi zagotavlja <a href=\"https://"
+"musicbrainz.org\">Musicbrainz</a>. Datoteke brez metapodatkov se "
+"identificirajo s storitvijo <a href=\"https://acoustid.org\">AcoustID</a> ."
 
 #: src/ui/identify/filerow.blp:19 src/ui/identify/recordingrow.blp:28
 msgid "Set recording manually"
@@ -998,62 +1003,62 @@ msgstr "1200 sl. točk"
 msgid "Maximum size"
 msgstr "Največja velikost"
 
-#: src/ui/shortcuts.blp:11
+#: src/ui/shortcuts.blp:6
 msgctxt "shortcut window"
 msgid "Files"
 msgstr "Datoteke"
 
-#: src/ui/shortcuts.blp:15
+#: src/ui/shortcuts.blp:10
 msgctxt "shortcut window"
 msgid "Open files"
 msgstr "Odpri datoteko"
 
-#: src/ui/shortcuts.blp:20
+#: src/ui/shortcuts.blp:15
 msgctxt "shortcut window"
 msgid "Open folder"
 msgstr "Odpri mapo"
 
-#: src/ui/shortcuts.blp:25
+#: src/ui/shortcuts.blp:20
 msgctxt "shortcut window"
 msgid "Save all modified files"
 msgstr "Shrani vse spremenjene datoteke"
 
-#: src/ui/shortcuts.blp:30
+#: src/ui/shortcuts.blp:25
 msgctxt "shortcut window"
 msgid "Sidebar"
 msgstr "Stranska vrstica"
 
-#: src/ui/shortcuts.blp:34
+#: src/ui/shortcuts.blp:29
 msgctxt "shortcut window"
 msgid "Select previous file in sidebar"
 msgstr "Izbere prejšnjo datoteko v stranski vrstici"
 
-#: src/ui/shortcuts.blp:39
+#: src/ui/shortcuts.blp:34
 msgctxt "shortcut window"
 msgid "Select next file in sidebar"
 msgstr "Izbere naslednjo datoteko v stranski vrstici"
 
-#: src/ui/shortcuts.blp:44
+#: src/ui/shortcuts.blp:39
 msgctxt "shortcut window"
 msgid "Select all files in sidebar"
 msgstr "Izbere vse datoteke v stranski vrstici"
 
-#: src/ui/shortcuts.blp:49
+#: src/ui/shortcuts.blp:44
 msgctxt "shortcut window"
 msgid "Remove selected files from sidebar"
 msgstr "Odstrani izbrane datoteke iz stranske vrstice"
 
-#: src/ui/shortcuts.blp:50
+#: src/ui/shortcuts.blp:45
 msgctxt "shortcut window"
 msgid "Closes the window if no files are present."
 msgstr "Zapre okno, če ni datotek."
 
-#: src/ui/shortcuts.blp:55
+#: src/ui/shortcuts.blp:50
 msgctxt "shortcut window"
 msgid "Other"
 msgstr "Drugi"
 
-#: src/ui/shortcuts.blp:59
+#: src/ui/shortcuts.blp:54
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Tipkovne bližnjice"
