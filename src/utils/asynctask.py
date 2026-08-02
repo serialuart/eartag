@@ -189,6 +189,9 @@ class EartagAsyncMultitasker(EartagAsyncTask):
         self.n_items = 0
         self.n_done = 0
 
+        self._queue_target = set()
+        self._queue_actual = set()
+
     async def _worker_handle_item(self, item):
         self._queue_actual.add(item)
 
