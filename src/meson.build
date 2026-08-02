@@ -8,7 +8,11 @@ conf.set('PYTHON', python.find_installation('python3').full_path())
 conf.set('VERSION', meson.project_version())
 conf.set('APP_ID', app_id)
 conf.set('APP_GRESOURCE_PATH', '/' + app_id.replace('.', '/'))
-conf.set('DEVEL', get_option('devel'))
+if get_option('devel')
+  conf.set('DEVEL', 'True')
+else
+  conf.set('DEVEL', 'False')
+endif
 conf.set('ACOUSTID_API_KEY', get_option('acoustid_api_key'))
 conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('pkgdatadir', pkgdatadir)
