@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the app.drey.EarTag package.
-# lumingzh <lumingzh@qq.com>, 2023-2025.
+# lumingzh <lumingzh@qq.com>, 2023-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: app.drey.EarTag\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/eartag/-/issues\n"
-"POT-Creation-Date: 2025-07-12 13:02+0000\n"
-"PO-Revision-Date: 2025-07-13 08:56+0800\n"
+"POT-Creation-Date: 2026-08-02 07:21+0000\n"
+"PO-Revision-Date: 2026-08-03 09:51+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -16,27 +16,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
 #. TRANSLATORS: If possible, do not translate the name of the program (Ear Tag). Transliteration (re-writing to fit another alphabet) is acceptable.
 #. Set up window title and file info label
-#: src/main.py:145 data/app.drey.EarTag.desktop.in:3
-#: data/app.drey.EarTag.metainfo.xml.in:4 src/window.py:123 src/window.py:364
-#: src/window.py:376 src/ui/window.blp:262 src/ui/nofile.blp:11
+#: src/main.py:146 data/app.drey.EarTag.desktop.in:2
+#: data/app.drey.EarTag.metainfo.xml.in:4 src/window.py:123 src/window.py:362
+#: src/window.py:374 src/ui/window.blp:262 src/ui/nofile.blp:11
 msgid "Ear Tag"
 msgstr "Ear Tag"
 
 #. TRANSLATORS: Add your name/nickname here
-#: src/main.py:155 src/main.py:157
+#: src/main.py:156 src/main.py:158
 msgid "translator-credits"
-msgstr "lumingzh <lumingzh@qq.com>, 2023-2025."
+msgstr "lumingzh <lumingzh@qq.com>, 2023-2026"
 
-#: data/app.drey.EarTag.desktop.in:4
+#: data/app.drey.EarTag.desktop.in:3
 msgid "Tag Editor"
 msgstr "标签编辑器"
 
 #. TRANSLATORS: App description.
-#: data/app.drey.EarTag.desktop.in:5 data/app.drey.EarTag.metainfo.xml.in:6
+#: data/app.drey.EarTag.desktop.in:4 data/app.drey.EarTag.metainfo.xml.in:6
 msgid "Edit audio file tags"
 msgstr "编辑音频文件标签"
 
@@ -44,7 +44,12 @@ msgstr "编辑音频文件标签"
 msgid "music;audio;tag;tagging;tagger;"
 msgstr "music;audio;tag;tagging;tagger;音乐;音频;标签;"
 
-#: data/app.drey.EarTag.metainfo.xml.in:104
+#: data/app.drey.EarTag.metainfo.xml.in:11
+#: data/app.drey.EarTag.metainfo.xml.in:13
+msgid "knuxify"
+msgstr "knuxify"
+
+#: data/app.drey.EarTag.metainfo.xml.in:112
 msgid ""
 "Ear Tag is a simple audio file tag editor. It is primarily geared towards "
 "making quick edits or bulk-editing tracks in albums/EPs. Unlike other "
@@ -52,26 +57,26 @@ msgid ""
 "library folder. It can:"
 msgstr ""
 "Ear Tag 是一个简约的音频文件标签编辑器。它主要设计为快速编辑或大批量编辑专辑/"
-"唱片中的曲目。不像其它标签编辑程序，Ear Tag 不需要用户设置一个音乐库文件夹。"
+"唱片中的曲目。不像其他标签编辑程序，Ear Tag 不需要用户设置一个音乐库文件夹。"
 "它可以："
 
-#: data/app.drey.EarTag.metainfo.xml.in:106
+#: data/app.drey.EarTag.metainfo.xml.in:114
 msgid "Edit tags of MP3, WAV, M4A, FLAC, OGG and WMA files"
 msgstr "编辑 MP3、WAV、M4A、FLAC、OGG 和 WMA 文件的标签"
 
-#: data/app.drey.EarTag.metainfo.xml.in:107
+#: data/app.drey.EarTag.metainfo.xml.in:115
 msgid "Modify metadata of multiple files at once"
 msgstr "同时修改多个文件的元数据"
 
-#: data/app.drey.EarTag.metainfo.xml.in:108
+#: data/app.drey.EarTag.metainfo.xml.in:116
 msgid "Rename files using information from present tags"
 msgstr "使用来自呈现标签的信息重命名文件"
 
-#: data/app.drey.EarTag.metainfo.xml.in:109
+#: data/app.drey.EarTag.metainfo.xml.in:117
 msgid "Identify files using AcoustID"
 msgstr "使用 AcoustID 识别文件"
 
-#: data/app.drey.EarTag.metainfo.xml.in:111
+#: data/app.drey.EarTag.metainfo.xml.in:119
 msgid "Network access is only used for the \"Identify selected files\" option."
 msgstr "网络访问仅用于“识别选中文件”选项。"
 
@@ -91,88 +96,88 @@ msgstr "更多信息"
 msgid "No supported files found in opened folder"
 msgstr "在打开的文件夹中未发现支持的文件"
 
-#: src/window.py:322
+#: src/window.py:320
 #, python-brace-format
 msgid "Saved changes to 1 file"
 msgid_plural "Saved changes to {n} files"
 msgstr[0] "已将修改保存到 {n} 个文件"
 
-#: src/window.py:331
+#: src/window.py:329
 msgid "Some of the opened files are read-only; changes cannot be saved"
 msgstr "部分打开的文件为只读；修改无法保存"
 
-#: src/window.py:336
+#: src/window.py:334
 msgid "Maximum folder depth reached, some files may not be loaded"
 msgstr "达到最大文件夹深度，一些文件可能未被加载"
 
-#: src/window.py:347
+#: src/window.py:345
 msgid "Unselect all files"
 msgstr "取消全选文件"
 
-#: src/window.py:350 src/ui/window.blp:227
+#: src/window.py:348 src/ui/window.blp:227
 msgid "Select all files"
 msgstr "选择所有文件"
 
 #. TRANSLATORS: Placeholder for file path when multiple files are selected.
 #. Shows up in the titlebar of the application.
-#: src/window.py:385 src/fileview.py:753
+#: src/window.py:383 src/fileview.py:753
 msgid "(Multiple files selected)"
 msgstr "（已选择多个文件）"
 
 #. : TRANSLATORS: Title of the popup for opening a file
-#: src/window.py:470 src/ui/nofile.blp:24
+#: src/window.py:468 src/ui/nofile.blp:24
 msgid "Open File"
 msgstr "打开文件"
 
-#: src/window.py:472
+#: src/window.py:470
 msgid "Add File"
 msgstr "添加文件"
 
-#: src/window.py:478 src/ui/nofile.blp:36
+#: src/window.py:476 src/ui/nofile.blp:36
 msgid "Open Folder"
 msgstr "打开文件夹"
 
-#: src/window.py:528
+#: src/window.py:526
 msgid "Some of the opened files have invalid values; cannot save"
 msgstr "部分打开的文件具有无效值；无法保存"
 
-#: src/window.py:659
+#: src/window.py:656
 msgid "No files selected"
 msgstr "未选择文件"
 
-#: src/window.py:665
+#: src/window.py:662
 #, python-brace-format
 msgid "1 file selected"
 msgid_plural "{n} files selected"
 msgstr[0] "已选择 {n} 个文件"
 
-#: src/window.py:738
+#: src/window.py:735
 #, python-brace-format
 msgid "Undid changes in 1 file"
 msgid_plural "Undid changes in {n} files"
 msgstr[0] "已撤消在 {n} 个文件中的修改"
 
-#: src/window.py:743
+#: src/window.py:740
 msgid "Redo"
 msgstr "重做"
 
-#: src/window.py:771
+#: src/window.py:768
 #, python-brace-format
 msgid "Redid changes in 1 file"
 msgid_plural "Redid changes in {n} files"
 msgstr[0] "已重做在 {n} 个文件中的修改"
 
-#: src/window.py:817
+#: src/window.py:814
 #, python-brace-format
 msgid "Removed tags from 1 file"
 msgid_plural "Removed tags from {n} files"
 msgstr[0] "已从 {n} 个文件移除标签"
 
-#: src/window.py:822 src/fileview.py:302
+#: src/window.py:819 src/fileview.py:302
 msgid "Undo"
 msgstr "撤消"
 
-#: src/window.py:848
+#: src/window.py:845
 #, python-brace-format
 msgid "Undid tag removal in 1 file"
 msgid_plural "Undid tag removal in {n} files"
@@ -535,7 +540,7 @@ msgid "(multiple values)"
 msgstr "（多个值）"
 
 #. TRANSLATORS: Placeholder for file sidebar items with no title set
-#: src/filelist.py:192
+#: src/filelist.py:191
 msgid "(No title)"
 msgstr "（无标题）"
 
@@ -551,39 +556,39 @@ msgstr "文件有未保存的更改"
 msgid "Remove from list"
 msgstr "从列表移除"
 
-#: src/dialogs.py:106
+#: src/dialogs.py:114
 msgid "Failed to Load Files"
 msgstr "加载文件失败"
 
-#: src/dialogs.py:107
+#: src/dialogs.py:115
 msgid "Some files could not be loaded."
 msgstr "有些文件无法加载。"
 
-#: src/dialogs.py:110
+#: src/dialogs.py:118
 msgid "Failed to Rename Files"
 msgstr "重命名文件失败"
 
-#: src/dialogs.py:111
+#: src/dialogs.py:119
 msgid "Some files could not be renamed."
 msgstr "有些文件无法重命名。"
 
-#: src/dialogs.py:114
+#: src/dialogs.py:122
 msgid "Failed to Save Files"
 msgstr "保存文件失败"
 
-#: src/dialogs.py:115
+#: src/dialogs.py:123
 msgid "Some files could not be saved."
 msgstr "有些文件无法保存。"
 
-#: src/dialogs.py:118
+#: src/dialogs.py:126
 msgid "An Error Has Occured"
 msgstr "发生了错误"
 
-#: src/dialogs.py:119
+#: src/dialogs.py:127
 msgid "An internal error has occured."
 msgstr "发生了内部错误。"
 
-#: src/dialogs.py:125
+#: src/dialogs.py:133
 msgid ""
 "Please copy the logs below and <a href=\"https://gitlab.gnome.org/World/"
 "eartag/-/issues/new\">submit an issue report</a>."
@@ -591,7 +596,7 @@ msgstr ""
 "请复制下方的日志并<a href=\"https://gitlab.gnome.org/World/eartag/-/issues/"
 "new\">提交缺陷报告</a>。"
 
-#: src/dialogs.py:139
+#: src/dialogs.py:147
 msgid "Copied error log to clipboard"
 msgstr "已将错误日志复制到剪贴板"
 
@@ -762,9 +767,9 @@ msgstr "取消选择文件夹"
 
 #: src/ui/rename.blp:148
 msgid ""
-"For a list of available placeholders, see the <a href=\"https://gitlab.gnome."
-"org/World/eartag/-/blob/main/src/backends/README.md#available-tags\">list of "
-"available tags</a>."
+"For a list of available placeholders, see the <a href=\"https://"
+"gitlab.gnome.org/World/eartag/-/blob/main/src/backends/README.md#available-"
+"tags\">list of available tags</a>."
 msgstr ""
 "要获取可用的占位符列表，参见<a href=\"https://gitlab.gnome.org/World/"
 "eartag/-/blob/main/src/backends/README.md#available-tags\">可用标签列表</a>。"
@@ -816,7 +821,7 @@ msgstr "查看 MusicBrainz 上的发行信息"
 #. This allows the user to switch between different releases of an album, EP, etc.
 #: src/identify.py:150
 msgid "Other releases"
-msgstr "其它发行"
+msgstr "其他发行"
 
 #: src/identify.py:714
 msgid "Unidentified Files"
@@ -850,9 +855,9 @@ msgstr "识别"
 
 #: src/ui/identify/identify.blp:72
 msgid ""
-"Track information is provided by <a href=\"https://musicbrainz."
-"org\">Musicbrainz</a>. Files without metadata are identified using the <a "
-"href=\"https://acoustid.org\">AcoustID</a> service."
+"Track information is provided by <a href=\"https://"
+"musicbrainz.org\">Musicbrainz</a>. Files without metadata are identified "
+"using the <a href=\"https://acoustid.org\">AcoustID</a> service."
 msgstr ""
 "曲目信息由 <a href=\"https://musicbrainz.org\">Musicbrainz</a> 提供。没有元数"
 "据的文件使用 <a href=\"https://acoustid.org\">AcoustID</a> 服务识别。"
@@ -938,62 +943,62 @@ msgstr "1200 px"
 msgid "Maximum size"
 msgstr "最大尺寸"
 
-#: src/ui/shortcuts.blp:11
+#: src/ui/shortcuts.blp:6
 msgctxt "shortcut window"
 msgid "Files"
 msgstr "文件"
 
-#: src/ui/shortcuts.blp:15
+#: src/ui/shortcuts.blp:10
 msgctxt "shortcut window"
 msgid "Open files"
 msgstr "打开文件"
 
-#: src/ui/shortcuts.blp:20
+#: src/ui/shortcuts.blp:15
 msgctxt "shortcut window"
 msgid "Open folder"
 msgstr "打开文件夹"
 
-#: src/ui/shortcuts.blp:25
+#: src/ui/shortcuts.blp:20
 msgctxt "shortcut window"
 msgid "Save all modified files"
 msgstr "保存所有修改的文件"
 
-#: src/ui/shortcuts.blp:30
+#: src/ui/shortcuts.blp:25
 msgctxt "shortcut window"
 msgid "Sidebar"
 msgstr "侧边栏"
 
-#: src/ui/shortcuts.blp:34
+#: src/ui/shortcuts.blp:29
 msgctxt "shortcut window"
 msgid "Select previous file in sidebar"
 msgstr "选择侧边栏中上个文件"
 
-#: src/ui/shortcuts.blp:39
+#: src/ui/shortcuts.blp:34
 msgctxt "shortcut window"
 msgid "Select next file in sidebar"
 msgstr "选择侧边栏中下个文件"
 
-#: src/ui/shortcuts.blp:44
+#: src/ui/shortcuts.blp:39
 msgctxt "shortcut window"
 msgid "Select all files in sidebar"
 msgstr "选择侧边栏中所有文件"
 
-#: src/ui/shortcuts.blp:49
+#: src/ui/shortcuts.blp:44
 msgctxt "shortcut window"
 msgid "Remove selected files from sidebar"
 msgstr "从侧边栏移除选中文件"
 
-#: src/ui/shortcuts.blp:50
+#: src/ui/shortcuts.blp:45
 msgctxt "shortcut window"
 msgid "Closes the window if no files are present."
 msgstr "如果没有文件打开则关闭窗口。"
 
-#: src/ui/shortcuts.blp:55
+#: src/ui/shortcuts.blp:50
 msgctxt "shortcut window"
 msgid "Other"
-msgstr "其它"
+msgstr "其他"
 
-#: src/ui/shortcuts.blp:59
+#: src/ui/shortcuts.blp:54
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "键盘快捷键"
