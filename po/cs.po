@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eartag main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/eartag/-/issues\n"
-"POT-Creation-Date: 2026-01-31 13:22+0000\n"
-"PO-Revision-Date: 2026-06-25 22:19+0200\n"
+"POT-Creation-Date: 2026-08-02 07:21+0000\n"
+"PO-Revision-Date: 2026-08-06 19:37+0200\n"
 "Last-Translator: Patrik Sivek <sivekpatrik@gmail.com>\n"
 "Language-Team: Czech\n"
 "Language: cs\n"
@@ -52,6 +52,11 @@ msgstr "Upravte štítky souborů hudby"
 #: data/app.drey.EarTag.desktop.in:12
 msgid "music;audio;tag;tagging;tagger;"
 msgstr "hudba;audio;štítky;tag;tagování;"
+
+#: data/app.drey.EarTag.metainfo.xml.in:11
+#: data/app.drey.EarTag.metainfo.xml.in:13
+msgid "knuxify"
+msgstr "knuxify"
 
 #: data/app.drey.EarTag.metainfo.xml.in:112
 msgid ""
