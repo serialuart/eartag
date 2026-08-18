@@ -1,5 +1,5 @@
 {
-    "app-id" : "app.drey.EarTag",
+    "app-id" : "app.drey.EarTag.Devel",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
@@ -20,7 +20,7 @@
         "/share/man"
     ],
     "modules" : [
-        "data/flatpak-python-modules.yaml",
+        "python3-requirements.yaml",
         {
             "name": "chromaprint",
             "buildsystem": "cmake-ninja",
@@ -43,7 +43,7 @@
             "sources" : [
                 {
                     "type" : "dir",
-                    "path" : ".",
+                    "path" : "../.."
                 }
             ]
         }
