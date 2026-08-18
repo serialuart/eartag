@@ -3,22 +3,9 @@ include:
     file: "flatpak/flatpak_ci_initiative.yml"
 
 stages:
-  - lint-test
+  - lint
+  - test
   - flatpak
-
-.build-common:
-  stage: lint-test
-  script:
-    - meson setup _build -Denable_networked_tests=true
-    - meson compile -C _build
-    - meson test "eartag*:" -v -C _build
-    - meson install -C _build
-
-build-alpine:
-  image: alpine:edge
-  extends: .build-common
-  before_script:
-    - apk add build-base git gtk4.0-dev libadwaita-dev meson python3 py3-gobject3 py3-filetype py3-mutagen py3-pillow py3-aiohttp py3-aiohttp-retry py3-aiofiles py3-xxhash desktop-file-utils appstream-glib gettext py3-pytest py3-pytest-asyncio py3-flake8 py3-pyacoustid
 
 lint-alpine:
   image: alpine:edge
@@ -30,6 +17,20 @@ lint-alpine:
     - ruff format --check src tests
     - ruff check --exit-zero src tests
   allow_failure: true
+
+.test-common:
+  script:
+    - meson setup _build -Denable_networked_tests=true
+    - meson compile -C _build
+    - meson test "eartag*:" -v -C _build
+    - meson install -C _build
+
+test-alpine:
+  stage: test
+  image: alpine:edge
+  extends: .build-common
+  before_script:
+    - apk add build-base git gtk4.0-dev libadwaita-dev meson python3 py3-gobject3 py3-filetype py3-mutagen py3-pillow py3-aiohttp py3-aiohttp-retry py3-aiofiles py3-xxhash desktop-file-utils appstream-glib gettext py3-pytest py3-pytest-asyncio py3-flake8 py3-pyacoustid
 
 .vars-devel:
   variables:
