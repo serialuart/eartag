@@ -1,30 +1,18 @@
 include:
-  - project: 'gnome/citemplates'
-    file: 'flatpak/flatpak-ci-initiative-sdk-extensions.yml'
-    ref: 42fbc2526a7680b6a4f284a210e63e3973ea6dae
-  - project: 'gnome/citemplates'
-    file: 'templates/default-rules.yml'
-    ref: 42fbc2526a7680b6a4f284a210e63e3973ea6dae
-
-stages:
-  - lint
-  - build-and-test
-  - flatpak
+  - project: "GNOME/citemplates"
+    file: "flatpak/flatpak_ci_initiative.yml"
+  - component: gitlab.gnome.org/GNOME/citemplates/release-service@master
+    inputs:
+      dist-job-name: "flatpak"
+      tarball-artifact-path: "${TARBALL_ARTIFACT_PATH}"
 
 .build-common:
-  stage: build-and-test
+  stage: test
   script:
     - meson setup _build -Denable_networked_tests=true
     - meson compile -C _build
     - meson test "eartag*:" -v -C _build
     - meson install -C _build
-
-#build-fedora:
-#	image: fedora:latest
-#	extends: .build-common
-#	before_script:
-#		- dnf install -y 'dnf-command(builddep)' meson git gtk4-devel libadwaita-devel gsettings-desktop-schemas-devel python3 python3-mutagen python3-pillow python3-gobject desktop-file-utils libappstream-glib libappstream-glib-builder python3-pytest python3-pip python3-acoustid ffmpeg-free
-#		- python3 -m pip install python-magic # fedora version does not work correctly?
 
 build-alpine:
   image: alpine:edge
@@ -34,7 +22,7 @@ build-alpine:
 
 lint-alpine:
   image: alpine:edge
-  stage: lint
+  stage: test
   before_script:
     - apk add build-base gtk4.0 libadwaita python3 py3-gobject3 py3-filetype py3-mutagen py3-pillow py3-aiohttp py3-aiohttp-retry py3-aiofiles py3-pyacoustid ffmpeg ruff
   script:
@@ -45,19 +33,20 @@ lint-alpine:
 
 # Flatpak build CI
 
-.vars-devel:
-  stage: flatpak
+variables:
+  FLATPAK_MODULE: "eartag"
+  TARBALL_ARTIFACT_PATH: ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-dist/${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.xz"
+
+flatpak:
+  extends: ".flatpak"
   variables:
-    MANIFEST_PATH: "app.drey.EarTag.Devel.json"
-    FLATPAK_MODULE: "eartag"
-    APP_ID: "app.drey.EarTag.Devel"
+    MANIFEST_PATH: "build-aux/flatpak/app.drey.EarTag.Devel.json"
     RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
+    APP_ID: "app.drey.EarTag.Devel"
     BUNDLE: "app.drey.EarTag.Devel.flatpak"
+    CONFIG_OPTS: -Ddevel=true
 
-# Build Flatpak for x86_64
-flatpak@x86_64:
-  extends: ['.flatpak@x86_64', '.vars-devel']
-
-# Build Flatpak for aarch64
-#flatpak@aarch64:
-#	extends: ['.flatpak@aarch64', '.vars-devel']
+nightly:
+  extends: ".publish_nightly"
+  dependencies: ["flatpak"]
+  needs: ["flatpak"]

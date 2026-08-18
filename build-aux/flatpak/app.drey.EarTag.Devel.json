@@ -20,7 +20,7 @@
         "/share/man"
     ],
     "modules" : [
-        "data/flatpak-python-modules.yaml",
+        "python3-requirements.yaml",
         {
             "name": "chromaprint",
             "buildsystem": "cmake-ninja",
