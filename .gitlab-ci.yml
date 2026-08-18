@@ -11,7 +11,6 @@ include:
     BUNDLE: "app.drey.EarTag.Devel.flatpak"
     CONFIG_OPTS: "-Ddebug=true"
     RUN_TESTS: "0"
-    PULL_CACHE: "0"
 
 # Build Flatpak for x86_64
 flatpak@x86_64:
