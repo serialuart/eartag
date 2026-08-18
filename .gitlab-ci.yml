@@ -6,47 +6,27 @@ include:
       dist-job-name: "flatpak"
       tarball-artifact-path: "${TARBALL_ARTIFACT_PATH}"
 
-.build-common:
-  stage: test
-  script:
-    - meson setup _build -Denable_networked_tests=true
-    - meson compile -C _build
-    - meson test "eartag*:" -v -C _build
-    - meson install -C _build
-
-build-alpine:
-  image: alpine:edge
-  extends: .build-common
-  before_script:
-    - apk add build-base git gtk4.0-dev libadwaita-dev meson python3 py3-gobject3 py3-filetype py3-mutagen py3-pillow py3-aiohttp py3-aiohttp-retry py3-aiofiles py3-xxhash desktop-file-utils appstream-glib gettext py3-pytest py3-pytest-asyncio py3-flake8 py3-pyacoustid
-
-lint-alpine:
-  image: alpine:edge
-  stage: test
-  before_script:
-    - apk add build-base gtk4.0 libadwaita python3 py3-gobject3 py3-filetype py3-mutagen py3-pillow py3-aiohttp py3-aiohttp-retry py3-aiofiles py3-pyacoustid ffmpeg ruff
-  script:
-    - ruff check --select=E9,F63,F7,F82,F821 src tests
-    - ruff format --check src tests
-    - ruff check --exit-zero src tests
-  allow_failure: true
-
-# Flatpak build CI
-
-variables:
-  FLATPAK_MODULE: "eartag"
-  TARBALL_ARTIFACT_PATH: ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-dist/${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.xz"
-
-flatpak:
-  extends: ".flatpak"
+.vars-devel:
   variables:
     MANIFEST_PATH: "build-aux/flatpak/app.drey.EarTag.Devel.json"
-    RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
+    FLATPAK_MODULE: "eartag"
     APP_ID: "app.drey.EarTag.Devel"
+    RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
     BUNDLE: "app.drey.EarTag.Devel.flatpak"
-    CONFIG_OPTS: -Ddevel=true
+    CONFIG_OPTS: "-Ddebug=true"
 
-nightly:
-  extends: ".publish_nightly"
-  dependencies: ["flatpak"]
-  needs: ["flatpak"]
+# Build Flatpak for x86_64
+flatpak@x86_64:
+  extends: ['.flatpak@x86_64', '.vars-devel']
+
+# Build Flatpak for aarch64
+flatpak@aarch64:
+  extends: ['.flatpak@aarch64', '.vars-devel']
+
+nightly@x86_64:
+  extends: '.publish_nightly'
+  needs: ['flatpak@x86_64']
+
+nightly@aarch64:
+  extends: '.publish_nightly'
+  needs: ['flatpak@aarch64']
