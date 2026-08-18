@@ -306,6 +306,10 @@ class MusicBrainzRecording(GObject.Object):
                     },
                 )
             )
+
+            if _data is False:
+                return []
+
             return [
                 r
                 for r in _data.get("recordings", [])
