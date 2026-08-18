@@ -1,10 +1,6 @@
 include:
   - project: "GNOME/citemplates"
     file: "flatpak/flatpak_ci_initiative.yml"
-  - component: gitlab.gnome.org/GNOME/citemplates/release-service@master
-    inputs:
-      dist-job-name: "flatpak"
-      tarball-artifact-path: "${TARBALL_ARTIFACT_PATH}"
 
 .vars-devel:
   variables:
