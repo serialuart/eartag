@@ -34,19 +34,7 @@
         "*.a"
     ],
     "modules" : [
-        {
-            "name": "blueprint-compiler",
-            "buildsystem": "meson",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/v0.16.0/blueprint-compiler-v0.16.0.tar.gz",
-                    "sha256": "01feb8263fe7a450b0a9fed0fd54cf88947aaf00f86cc7da345f8b39a0e7bd30"
-                }
-            ]
-        },
-        "data/flatpak-python-modules.json",
-        "data/flatpak-python-aiohttp.json",
+        "data/flatpak-python-modules.yaml",
         {
             "name": "python3-pytest",
             "buildsystem": "simple",
@@ -79,27 +67,17 @@
         {
             "name": "chromaprint",
             "buildsystem": "cmake-ninja",
-            "builddir": true,
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
                 "-DBUILD_TOOLS:BOOL=ON",
-                "-DBUILD_TESTS:BOOL=OFF",
-                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+                "-DBUILD_TESTS:BOOL=OFF"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/acoustid/chromaprint/archive/aa67c95b9e486884a6d3ee8b0c91207d8c2b0551.tar.gz",
-                    "sha256": "88e13f065e31d59d102339d956d0e2f99b125386e4d58ae7de6f09b90104b90f"
-                },
-                {
-                    "type": "patch",
-                    "path": ".chromaprint_ffmpeg7.patch"
+                    "url": "https://github.com/acoustid/chromaprint/releases/download/v1.6.0/chromaprint-1.6.0.tar.gz",
+                    "sha256": "9d33482e56a1389a37a0d6742c376139fa43e3b8a63d29003222b93db2cb40da"
                 }
-            ],
-            "cleanup": [
-                "/include",
-                "/lib/pkgconfig"
             ]
         },
         {
