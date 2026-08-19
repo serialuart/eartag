@@ -1,0 +1,9 @@
+audioread
+aiohttp
+aiohttp-retry
+aiofiles
+filetype
+mutagen
+pillow
+pyacoustid
+xxhash
