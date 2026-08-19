@@ -1,6 +1,8 @@
+import filecmp
 import os
 import shutil
-import filecmp
+
+import aiofiles.os
 import pytest
 
 from src.backends.file import CoverType, EartagFileCover
@@ -32,7 +34,7 @@ class TestFile:
     def __enter__(self):
         return self.path
 
-    def __exit__(self, type, value, tb):
+    def __exit__(self, _type, _value, tb):
         if tb:
             return None
         if self.remove:
@@ -364,16 +366,16 @@ async def backend_rename(file):
 
     await file.set_path_async(new_path)
 
-    assert not os.path.exists(original_path)
-    assert os.path.exists(new_path)
+    assert not await aiofiles.os.path.exists(original_path)
+    assert await aiofiles.os.path.exists(new_path)
     assert file.props.path == new_path
     assert file.props.title == "Moved Title"
     assert filecmp.cmp(orig_copy_path, new_path, shallow=False)
 
     file.save()
     filecmp.clear_cache()
-    assert not os.path.exists(original_path)
-    assert os.path.exists(new_path)
+    assert not await aiofiles.os.path.exists(original_path)
+    assert await aiofiles.os.path.exists(new_path)
     assert not filecmp.cmp(orig_copy_path, new_path, shallow=False)
 
     os.remove(orig_copy_path)

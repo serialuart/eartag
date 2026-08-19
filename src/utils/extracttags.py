@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from ..backends.file import VALID_TAGS
-
 import os.path
 import re
+
+from ..backends.file import VALID_TAGS
 
 EXTRACTABLE_TAGS = VALID_TAGS + ("length", "bitrate")
 

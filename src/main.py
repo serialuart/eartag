@@ -1,25 +1,24 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-import sys
-import gi
-import os.path
+import asyncio
 import logging
+import os.path
+import sys
+
+import gi
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 gi.require_version("GdkPixbuf", "2.0")
 
-from gi.repository import Adw, Gtk, Gio
+from gi.repository import Adw, Gio, Gtk  # noqa: E402
 
-# asyncio setup
-import asyncio
-from ._async import policy
-
-from . import APP_ID, APP_GRESOURCE_PATH
-from .utils.validation import is_valid_music_file, get_mimetype
-from .window import EartagFileDialogType, EartagWindow
-from .logger import logger
+from . import APP_GRESOURCE_PATH, APP_ID  # noqa: E402
+from ._async import policy  # noqa: E402
+from .logger import logger  # noqa: E402
+from .utils.validation import get_mimetype, is_valid_music_file  # noqa: E402
+from .window import EartagFileDialogType, EartagWindow  # noqa: E402
 
 
 class Application(Adw.Application):

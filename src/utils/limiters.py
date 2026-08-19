@@ -1,8 +1,9 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import GObject, Gtk
 import re
+
+from gi.repository import GObject, Gtk
 
 from .misc import is_float
 

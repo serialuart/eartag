@@ -1,8 +1,9 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import GObject, Gtk, GLib, Gdk
 import os.path
+
+from gi.repository import Gdk, GLib, GObject, Gtk
 
 from . import APP_GRESOURCE_PATH
 
@@ -307,7 +308,7 @@ class EartagFileList(Gtk.ListView):
         old_selected = self.file_manager.selected_files_list.copy()
         self.file_manager.remove_files(old_selected)
 
-    def on_activate(self, list, index):
+    def on_activate(self, _list, index):
         if self._ignore_activate is True:
             self._ignore_activate = False
             return

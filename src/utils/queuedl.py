@@ -4,13 +4,15 @@ Code for generic queued downloader.
 """
 
 import asyncio
-from aiohttp.client_exceptions import ClientConnectorError
-import aiohttp
-from aiohttp_retry import RetryClient, ExponentialRetry
+import time
 from enum import Enum
 from tempfile import NamedTemporaryFile
 from typing import Union
-import time
+
+import aiohttp
+from aiohttp.client_exceptions import ClientConnectorError
+from aiohttp_retry import ExponentialRetry, RetryClient
+
 from ..logger import logger
 
 try:

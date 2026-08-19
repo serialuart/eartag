@@ -1,23 +1,24 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
+import os.path
+import re
+
+from gi.repository import Adw, Gio, GObject, Gtk, Pango
+
 from . import APP_GRESOURCE_PATH
-from .backends.file import EartagFile, VALID_TAGS, EXTRA_TAGS
+from .backends.file import EXTRA_TAGS, VALID_TAGS, EartagFile
 from .config import config
 from .utils.asynctask import EartagAsyncTask
 from .utils.extracttags import extract_tags_from_filename
-from .utils.tagsyntaxhighlight import (
-    EartagPlaceholderSyntaxHighlighter,
-    attr_foreground_new,
-    THEMES,
-)
+from .utils.misc import filename_valid
 from .utils.previewselector import EartagPreviewSelectorButton  # noqa: F401
 from .utils.tagselector import EartagTagSelectorButton  # noqa: F401
-from .utils.misc import filename_valid
-
-from gi.repository import Adw, Gtk, Gio, GObject, Pango
-import re
-import os.path
+from .utils.tagsyntaxhighlight import (
+    THEMES,
+    EartagPlaceholderSyntaxHighlighter,
+    attr_foreground_new,
+)
 
 
 @Gtk.Template(resource_path=f"{APP_GRESOURCE_PATH}/ui/extract.ui")

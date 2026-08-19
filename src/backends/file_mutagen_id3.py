@@ -1,18 +1,18 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import GObject
 import asyncio
 
+import mutagen.id3
 import mutagen.mp3
 import mutagen.wave
-import mutagen.id3
+from gi.repository import GObject
 from mutagen.id3 import PictureType
 
-from .file import CoverType
-from .file_mutagen_common import EartagFileMutagenCommon
 from ..utils.misc import safe_int
 from ..utils.validation import get_mimetype, get_mimetype_buffer
+from .file import CoverType
+from .file_mutagen_common import EartagFileMutagenCommon
 
 # These are copied from the code for Mutagen's EasyID3 functions:
 KEY_TO_FRAME = {

@@ -4,13 +4,13 @@
 # Export some common functions:
 from .misc import (  # noqa: F401
     all_equal,
+    file_is_sandboxed,
     find_in_model,
-    is_float,
     get_readable_length,
     inspect_prettyprint,
-    title_case_preserve_uppercase,
-    simplify_string,
-    simplify_compare,
+    is_float,
     reg_and_simple_cmp,
-    file_is_sandboxed,
+    simplify_compare,
+    simplify_string,
+    title_case_preserve_uppercase,
 )

@@ -1,26 +1,27 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from .config import config, DLCoverSize
-from .utils.asynctask import EartagAsyncTask
-from .utils.validation import is_valid_music_file, VALID_AUDIO_MIMES
-from .utils.tagselector import EartagTagSelectorButton  # noqa: F401
-from .dialogs import (
-    EartagErrorType,
-    EartagErrorDialog,
-    EartagCloseWarningDialog,
-    EartagDiscardWarningDialog,
-    EartagTagDeleteWarningDialog,
-)
-from .fileview import EartagFileView  # noqa: F401
-from .filemanager import EartagFileManager
-from .filelist import EartagFileList, EartagFileListItem  # noqa: F401
-from . import APP_GRESOURCE_PATH, DEVEL
-
 import asyncio
-from gi.repository import Adw, Gdk, GLib, Gtk, Gio, GObject
 import os
 from enum import Flag
+
+from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk
+
+from . import APP_GRESOURCE_PATH, DEVEL
+from .config import DLCoverSize, config
+from .dialogs import (
+    EartagCloseWarningDialog,
+    EartagDiscardWarningDialog,
+    EartagErrorDialog,
+    EartagErrorType,
+    EartagTagDeleteWarningDialog,
+)
+from .filelist import EartagFileList, EartagFileListItem  # noqa: F401
+from .filemanager import EartagFileManager
+from .fileview import EartagFileView  # noqa: F401
+from .utils.asynctask import EartagAsyncTask
+from .utils.tagselector import EartagTagSelectorButton  # noqa: F401
+from .utils.validation import VALID_AUDIO_MIMES, is_valid_music_file
 
 
 class EartagFileDialogType(Flag):

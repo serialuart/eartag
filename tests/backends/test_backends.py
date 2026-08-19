@@ -1,10 +1,11 @@
-from .common import run_backend_tests
 import pytest
 
-from src.backends.file_mutagen_vorbis import EartagFileMutagenVorbis
-from src.backends.file_mutagen_mp4 import EartagFileMutagenMP4
-from src.backends.file_mutagen_id3 import EartagFileMutagenID3
 from src.backends.file_mutagen_asf import EartagFileMutagenASF
+from src.backends.file_mutagen_id3 import EartagFileMutagenID3
+from src.backends.file_mutagen_mp4 import EartagFileMutagenMP4
+from src.backends.file_mutagen_vorbis import EartagFileMutagenVorbis
+
+from .common import run_backend_tests
 
 
 @pytest.mark.asyncio

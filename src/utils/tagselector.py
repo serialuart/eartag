@@ -5,10 +5,10 @@ Common code for the placeholder selector used in the rename and extract UIs,
 as well as the fileview "add extra tags" button.
 """
 
-from .. import APP_GRESOURCE_PATH
-from ..backends.file import VALID_TAGS, TAG_NAMES
+from gi.repository import Gdk, GObject, Gtk
 
-from gi.repository import Gdk, Gtk, GObject
+from .. import APP_GRESOURCE_PATH
+from ..backends.file import TAG_NAMES, VALID_TAGS
 
 
 @Gtk.Template(resource_path=f"{APP_GRESOURCE_PATH}/ui/tagselectorbutton.ui")
@@ -96,7 +96,7 @@ class EartagTagSelectorButton(Gtk.MenuButton):
         """Refreshes the filter for the tag placeholder insert row."""
         self.tag_filter.changed(Gtk.FilterChange.DIFFERENT)
 
-    def set_filter(self, filter):
+    def set_filter(self, filter_):
         """
         Sets a custom filter for the tag selector.
 
@@ -104,7 +104,7 @@ class EartagTagSelectorButton(Gtk.MenuButton):
         to manage its own filter model to keep track of available tags and
         remove already present ones.
         """
-        self.tag_filter = filter
+        self.tag_filter = filter_
         self.tag_model.set_filter(self.tag_filter)
 
     def get_search_query(self) -> str:

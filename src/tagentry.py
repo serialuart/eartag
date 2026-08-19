@@ -1,15 +1,15 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
+from collections.abc import Iterable
+
 from gi.repository import Adw, GObject, Gtk
 
 from ._async import event_loop
-from .utils.limiters import EartagEntryLimiters
-from .utils.widgets import EartagEditableLabel
-from .utils.misc import all_equal, safe_int, safe_float
 from .backends.file import EartagFile
-
-from collections.abc import Iterable
+from .utils.limiters import EartagEntryLimiters
+from .utils.misc import all_equal, safe_float, safe_int
+from .utils.widgets import EartagEditableLabel
 
 
 class EartagTagEntryManager(GObject.Object):

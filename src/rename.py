@@ -1,22 +1,23 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from . import APP_GRESOURCE_PATH
-from .backends.file import EartagFile, VALID_TAGS, TAG_NAMES
-from .config import config
-from .utils import get_readable_length, file_is_sandboxed
-from .utils.misc import filename_valid
-from .utils.tagselector import EartagTagSelectorButton  # noqa: F401
-from .utils.tagsyntaxhighlight import (
-    EartagPlaceholderSyntaxHighlighter,
-    attr_foreground_new,
-    THEMES,
-)
-from .utils.previewselector import EartagPreviewSelectorButton  # noqa: F401
-
-from gi.repository import Adw, GLib, Gtk, Gio, GObject, Pango
 import os
 import re
+
+from gi.repository import Adw, Gio, GLib, GObject, Gtk, Pango
+
+from . import APP_GRESOURCE_PATH
+from .backends.file import TAG_NAMES, VALID_TAGS, EartagFile
+from .config import config
+from .utils import file_is_sandboxed, get_readable_length
+from .utils.misc import filename_valid
+from .utils.previewselector import EartagPreviewSelectorButton  # noqa: F401
+from .utils.tagselector import EartagTagSelectorButton  # noqa: F401
+from .utils.tagsyntaxhighlight import (
+    THEMES,
+    EartagPlaceholderSyntaxHighlighter,
+    attr_foreground_new,
+)
 
 
 def tag_is_int(file, tag):
@@ -296,7 +297,7 @@ class EartagRenameDialog(Adw.Dialog):
             return
 
         self.error_banner.set_revealed(False)
-        format = self.filename_entry.get_text()
+        format_str = self.filename_entry.get_text()
         names = []
         for file in self.files:
             if self.props.folder:
@@ -306,7 +307,7 @@ class EartagRenameDialog(Adw.Dialog):
             names.append(
                 os.path.join(
                     basepath,
-                    parse_placeholder_string(format, file) + file.props.filetype,
+                    parse_placeholder_string(format_str, file) + file.props.filetype,
                 )
             )
 

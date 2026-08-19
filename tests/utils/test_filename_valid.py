@@ -2,7 +2,7 @@ import os.path
 
 import pytest
 
-from src.utils.misc import filename_valid, FILENAME_BANNED_CHARS, BANNED_FILENAMES
+from src.utils.misc import BANNED_FILENAMES, FILENAME_BANNED_CHARS, filename_valid
 
 
 def test_empty_filename():

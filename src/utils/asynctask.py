@@ -1,14 +1,15 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import GLib, GObject
+import asyncio
 import time
 import traceback
-import asyncio
+from typing import Coroutine
+
+from gi.repository import GLib, GObject
 
 from .._async import event_loop
 from ..logger import logger
-from typing import Coroutine
 
 
 class EartagAsyncTask(GObject.Object):

@@ -1,27 +1,28 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-import gi
-
-gi.require_version("GdkPixbuf", "2.0")
-from gi.repository import GObject, GdkPixbuf, GLib, Gio
+import asyncio
+import io
 import os
 import re
 import shutil
-import uuid
-import asyncio
-import aiofiles
-import xxhash
-from PIL import Image
-from typing import Self
-from enum import IntEnum
 import traceback
-import io
+import uuid
 import weakref
+from enum import IntEnum
+from typing import Self
 
-from ..utils.validation import get_mimetype, get_mimetype_buffer
-from ..utils.misc import safe_int, safe_float
-from ..logger import logger
+import aiofiles
+import gi
+
+gi.require_version("GdkPixbuf", "2.0")
+import xxhash  # noqa: E402
+from gi.repository import GdkPixbuf, Gio, GLib, GObject  # noqa: E402
+from PIL import Image  # noqa: E402
+
+from ..logger import logger  # noqa: E402
+from ..utils.misc import safe_float, safe_int  # noqa: E402
+from ..utils.validation import get_mimetype, get_mimetype_buffer  # noqa: E402
 
 BASIC_TAGS = (
     "title", "artist", "album", "albumartist", "tracknumber",
@@ -783,12 +784,12 @@ class EartagFile(GObject.Object):
 
         has_error = True
         if "-" in value:
-            for format in (
+            for date_format in (
                 "^[0-9]{4}$",
                 "^[0-9]{4}-[0-9]{2}$",
                 "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
             ):
-                if re.match(format, value):
+                if re.match(date_format, value):
                     has_error = False
                     break
         else:
@@ -891,7 +892,7 @@ class EartagFile(GObject.Object):
             return self.get_tag("copyright")
         return None
 
-    @copyright.setter
+    @copyright.setter  # noqa: A003
     def copyright(self, value):
         if "copyright" not in self.supported_extra_tags:
             return None

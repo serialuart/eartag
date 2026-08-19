@@ -1,20 +1,21 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import GObject
 import asyncio
 import base64
-from PIL import Image
 import io
 
 import mutagen
-from mutagen.flac import FLAC, Picture, error as FLACError
+from gi.repository import GObject
+from mutagen.flac import FLAC, Picture
+from mutagen.flac import error as FLACError
 from mutagen.id3 import PictureType
+from PIL import Image
 
-from .file import CoverType
-from .file_mutagen_common import EartagFileMutagenCommon
 from ..utils.misc import safe_int
 from ..utils.validation import get_mimetype_buffer
+from .file import CoverType
+from .file_mutagen_common import EartagFileMutagenCommon
 
 
 class EartagFileMutagenVorbis(EartagFileMutagenCommon):
@@ -53,10 +54,10 @@ class EartagFileMutagenVorbis(EartagFileMutagenCommon):
 
     async def load_from_file(self, path):
         from mutagen.oggflac import OggFLAC
+        from mutagen.oggopus import OggOpus
         from mutagen.oggspeex import OggSpeex
         from mutagen.oggtheora import OggTheora
         from mutagen.oggvorbis import OggVorbis
-        from mutagen.oggopus import OggOpus
 
         self.mg_file = await asyncio.to_thread(
             mutagen.File,

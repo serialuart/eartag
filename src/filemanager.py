@@ -1,34 +1,35 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import Gio, GObject, GLib, Gtk
 import asyncio
-import aiofiles
-import aiofiles.os
 import mimetypes
 import os.path
 import stat
 
+import aiofiles
+import aiofiles.os
+from gi.repository import Gio, GLib, GObject, Gtk
+
 from .backends import (
-    EartagFileMutagenVorbis,
+    EartagFileMutagenASF,
     EartagFileMutagenID3,
     EartagFileMutagenMP4,
-    EartagFileMutagenASF,
+    EartagFileMutagenVorbis,
 )
 from .backends.file import EartagFile
 from .config import config
+from .dialogs import EartagRemovalDiscardWarningDialog
 from .utils.asynctask import EartagAsyncMultitasker
-from .utils.misc import find_in_model, cleanup_filename, natural_compare, iter_selection_model
+from .utils.misc import cleanup_filename, find_in_model, iter_selection_model, natural_compare
 from .utils.validation import (
     get_mimetype_async,
     is_valid_music_file_async,
 )
-from .dialogs import EartagRemovalDiscardWarningDialog
 
 
 async def eartagfile_from_path(path):
     """Returns an EartagFile subclass for the provided file."""
-    if not os.path.exists(path):
+    if not await aiofiles.os.path.exists(path):
         raise ValueError
 
     # We do two filetype guesses:

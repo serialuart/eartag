@@ -1,6 +1,6 @@
-from src.utils.extracttags import extract_tags_from_filename
-
 import pytest
+
+from src.utils.extracttags import extract_tags_from_filename
 
 
 def test_empty_filename():

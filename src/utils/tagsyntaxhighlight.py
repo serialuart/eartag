@@ -1,10 +1,11 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from ..backends.file import VALID_TAGS
-
-from gi.repository import Adw, Pango, GObject
 import re
+
+from gi.repository import Adw, GObject, Pango
+
+from ..backends.file import VALID_TAGS
 
 THEMES = {
     "light": {
@@ -36,16 +37,16 @@ THEMES = {
 
 def pango_attr_iter(attrlist: Pango.AttrList):
     """Provides an iterator for Pango.AttrList."""
-    iter = attrlist.get_iterator()
+    iterator = attrlist.get_iterator()
     try:
-        attr = iter.get_attrs()[0]
+        attr = iterator.get_attrs()[0]
     except IndexError:
         return
     while attr:
         yield attr
-        iter.next()
+        iterator.next()
         try:
-            attr = iter.get_attrs()[0]
+            attr = iterator.get_attrs()[0]
         except IndexError:
             break
 

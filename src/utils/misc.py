@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from itertools import groupby
+import os
 import re
 import unicodedata
-import os
+from itertools import groupby
 
 
 def all_equal(iterable):

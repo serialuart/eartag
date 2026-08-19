@@ -4,11 +4,12 @@
 Common code for the preview selector in the rename and extract tags dialogs.
 """
 
-from gi.repository import Gtk, GObject, Gio, Gdk
 import os.path
 
-from ..backends.file import EartagFile
+from gi.repository import Gdk, Gio, GObject, Gtk
+
 from .. import APP_GRESOURCE_PATH
+from ..backends.file import EartagFile
 
 
 @Gtk.Template(resource_path=f"{APP_GRESOURCE_PATH}/ui/previewselectoritem.ui")
@@ -72,7 +73,7 @@ class EartagPreviewSelectorButton(Gtk.MenuButton):
     __gtype_name__ = "EartagPreviewSelectorButton"
 
     popover = Gtk.Template.Child()
-    list = Gtk.Template.Child()
+    listview = Gtk.Template.Child("list")
     search_entry = Gtk.Template.Child()
 
     selected_index = GObject.Property(type=int, default=0)
@@ -99,8 +100,8 @@ class EartagPreviewSelectorButton(Gtk.MenuButton):
         self.factory.connect("bind", self.factory_bind)
         self.factory.connect("unbind", self.factory_unbind)
         self.factory.connect("teardown", self.factory_teardown)
-        self.list.set_model(self.selection_model)
-        self.list.connect("activate", self.set_previewed_file_from_selection)
+        self.listview.set_model(self.selection_model)
+        self.listview.connect("activate", self.set_previewed_file_from_selection)
 
         # Close popover if Escape key is pressed in search entry
         controller = Gtk.ShortcutController()
@@ -111,7 +112,7 @@ class EartagPreviewSelectorButton(Gtk.MenuButton):
         controller.add_shortcut(shortcut)
         self.search_entry.add_controller(controller)
 
-    def set_files(self, files: list):
+    def set_files(self, files: list[EartagFile]):
         self.model_nofilter.splice(0, 0, files)
         self.refresh_filter()
 
@@ -119,7 +120,7 @@ class EartagPreviewSelectorButton(Gtk.MenuButton):
         self._formatting_function = func
         # We do this here since otherwise it will fail as the formatting
         # function isn't set yet.
-        self.list.set_factory(self.factory)
+        self.listview.set_factory(self.factory)
 
     def filter_func(self, item, *args):
         """Filter function for the tag dropdown."""
@@ -137,7 +138,7 @@ class EartagPreviewSelectorButton(Gtk.MenuButton):
     def close_preview_selector_popover(self, *args):
         self.popover.popdown()
 
-    def set_previewed_file_from_selection(self, list, selection, *args):
+    def set_previewed_file_from_selection(self, _list, selection, *args):
         item = self.model.get_item(selection)
         index_found, index = self.model_nofilter.find(item)
         index = index if index_found else 0

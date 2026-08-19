@@ -1,6 +1,6 @@
 import pytest
 
-from src.utils.misc import cleanup_filename, FILENAME_BANNED_CHARS, BANNED_FILENAMES
+from src.utils.misc import BANNED_FILENAMES, FILENAME_BANNED_CHARS, cleanup_filename
 
 
 @pytest.mark.parametrize("banned_character", FILENAME_BANNED_CHARS)

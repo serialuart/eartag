@@ -8,15 +8,15 @@ import traceback
 import urllib
 import urllib.parse
 import urllib.request
-from typing import List, Self, Optional, Tuple
+from typing import List, Optional, Self, Tuple
 
 from gi.repository import GObject
 
 from ._async import event_loop
-from .utils.queuedl import EartagQueuedDownloader, EartagDownloaderMode
-from .utils.misc import simplify_compare
-from .backends.file import EartagFile, CoverType
+from .backends.file import CoverType, EartagFile
 from .logger import logger
+from .utils.misc import simplify_compare
+from .utils.queuedl import EartagDownloaderMode, EartagQueuedDownloader
 
 try:
     # HACK: The Gst backend of audioread, which is used by acoustid, is not very
@@ -53,7 +53,7 @@ mb_query = EartagQueuedDownloader(
 )
 
 
-def build_url(endpoint, id="", **kwargs):
+def build_url(endpoint, mbid="", **kwargs):
     """Builds a MusicBrainz API endpoint URL."""
     args = []
     for argname, argdata in kwargs.items():
@@ -62,8 +62,8 @@ def build_url(endpoint, id="", **kwargs):
         elif argname == "query" and isinstance(argdata, dict):
             argdata = " AND ".join([f"{k}:{v}" for k, v in argdata.items() if v])
         args.append(f"{argname}={urllib.parse.quote(argdata, encoding='utf-8')}")
-    if id:
-        return f"https://musicbrainz.org/ws/2/{endpoint}/{id}?{'&'.join(args)}&fmt=json"
+    if mbid:
+        return f"https://musicbrainz.org/ws/2/{endpoint}/{mbid}?{'&'.join(args)}&fmt=json"
     return f"https://musicbrainz.org/ws/2/{endpoint}?{'&'.join(args)}&fmt=json"
 
 
@@ -725,11 +725,11 @@ class MusicBrainzRelease(GObject.Object):
         self.back_cover = EartagCAACover("release", self.release_id, "back")
 
     @staticmethod
-    async def new_for_id(id):
+    async def new_for_id(mbid):
         data = await mb_query.download(
             build_url(
                 "release",
-                id,
+                mbid,
                 inc=[
                     "artist-credits",
                     "recordings",
@@ -883,8 +883,8 @@ class MusicBrainzReleaseGroup(GObject.Object):
         return await mb_query.download(build_url("release-group", groupid, inc=["releases"]))
 
     @staticmethod
-    async def new_for_id(id):
-        data = await MusicBrainzReleaseGroup._fetch_full_data(id)
+    async def new_for_id(mbid):
+        data = await MusicBrainzReleaseGroup._fetch_full_data(mbid)
         return MusicBrainzReleaseGroup(relgroup_data=data)
 
     @GObject.Property(type=str)
@@ -917,7 +917,9 @@ class MusicBrainzReleaseGroup(GObject.Object):
 
     async def get_releases_async(self):
         if not self._releases:
-            self._releases = [await MusicBrainzRelease.new_for_id(id) for id in self.release_ids]
+            self._releases = [
+                await MusicBrainzRelease.new_for_id(mbid) for mbid in self.release_ids
+            ]
 
     @GObject.Property(type=str)
     def thumbnail_path(self):

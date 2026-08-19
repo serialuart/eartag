@@ -1,16 +1,16 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import GObject
 import asyncio
 import struct
 
 import mutagen.asf
+from gi.repository import GObject
 from mutagen.id3 import PictureType
 
+from ..utils.misc import safe_int
 from .file import CoverType
 from .file_mutagen_common import EartagFileMutagenCommon
-from ..utils.misc import safe_int
 
 # These are copied from the code for Quod Libet's wma handling:
 KEY_TO_FRAME = {

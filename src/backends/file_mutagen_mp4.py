@@ -1,17 +1,17 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import GObject
 import asyncio
 import base64
 
 import mutagen.mp4
+from gi.repository import GObject
 from mutagen.mp4 import MP4Cover
 
-from .file import CoverType
-from .file_mutagen_common import EartagFileMutagenCommon
 from ..utils.misc import safe_int
 from ..utils.validation import get_mimetype_buffer
+from .file import CoverType
+from .file_mutagen_common import EartagFileMutagenCommon
 
 EMPTY_COVER = MP4Cover(
     base64.b64decode(

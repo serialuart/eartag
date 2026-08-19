@@ -3,13 +3,13 @@ from unittest.mock import patch
 import pytest
 
 from src.utils.validation import (
-    is_valid_music_file,
-    is_valid_image_file,
-    is_valid_file,
-    is_valid_music_file_async,
-    is_valid_image_file_async,
-    is_valid_file_async,
     VALID_AUDIO_MIMES,
+    is_valid_file,
+    is_valid_file_async,
+    is_valid_image_file,
+    is_valid_image_file_async,
+    is_valid_music_file,
+    is_valid_music_file_async,
 )
 
 EXAMPLES_DIRECTORY = "tests/backends/examples"

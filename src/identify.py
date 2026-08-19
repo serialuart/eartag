@@ -1,27 +1,26 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import Adw, Gtk, Gio, GObject, GdkPixbuf
-
 import asyncio
-import os
 import html
-import traceback
+import os
 import re
+import traceback
 
+from gi.repository import Adw, GdkPixbuf, Gio, GObject, Gtk
+
+from . import APP_GRESOURCE_PATH
+from .backends.file import EartagFile
+from .logger import logger
 from .musicbrainz import (
-    acoustid_identify_file,
     MusicBrainzRecording,
     MusicBrainzRelease,
+    acoustid_identify_file,
 )
-from .logger import logger
 from .utils import find_in_model
 from .utils.asynctask import EartagAsyncTask
 from .utils.extracttags import extract_tags_from_filename
 from .utils.widgets import EartagModelExpanderRow
-from .backends.file import EartagFile
-from . import APP_GRESOURCE_PATH
-
 
 MBID_REGEX = r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
 RECORDING_URL_REGEX = r"^(https?://)?musicbrainz.org/recording/(?P<mbid>" + MBID_REGEX + ")/?$"

@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import Adw, Gdk, Gtk, GObject, Pango
+from gi.repository import Adw, Gdk, GObject, Gtk, Pango
 
-from ..backends.file import CoverType
 from .. import APP_GRESOURCE_PATH
+from ..backends.file import CoverType
 
 
 class EartagPopoverButton(Gtk.Box):

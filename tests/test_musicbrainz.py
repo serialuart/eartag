@@ -2,16 +2,18 @@
 Tests MusicBrainz functions.
 """
 
+import os
+
+import pytest
+
+from src.backends.file_mutagen_id3 import EartagFileMutagenID3
 from src.musicbrainz import (
     MusicBrainzRecording,
     acoustid_identify_file,
     # 	make_request,
 )
-from src.backends.file_mutagen_id3 import EartagFileMutagenID3
-from .common import dummy_file  # noqa: F401
 
-import pytest
-import os
+from .common import dummy_file  # noqa: F401
 
 NOT_FOUND_STR = "Could not find one of the required releases (did something move at MusicBrainz, or do we have no internet?)"  # noqa: E501
 

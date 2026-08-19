@@ -1,11 +1,12 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
-from gi.repository import Adw, Gtk, Gdk
-from . import APP_GRESOURCE_PATH
 import asyncio
-
 from enum import IntEnum
+
+from gi.repository import Adw, Gdk, Gtk
+
+from . import APP_GRESOURCE_PATH
 
 
 @Gtk.Template(resource_path=f"{APP_GRESOURCE_PATH}/ui/dialogs/closewarning.ui")

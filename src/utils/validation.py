@@ -1,18 +1,18 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
+import mimetypes
+import os.path
+from collections.abc import Iterable
+from typing import Optional, Union
+
 import aiofiles
 import aiofiles.os
-import os.path
 import filetype
 from filetype.types import AUDIO as audio_matchers
 from filetype.types import IMAGE as image_matchers
 from filetype.types import VIDEO as video_matchers
 from filetype.types.base import Type
-import mimetypes
-
-from collections.abc import Iterable
-from typing import Union, Optional
 
 VALID_AUDIO_MIMES = (
     "application/ogg",

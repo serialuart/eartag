@@ -2,8 +2,9 @@
 Shim for global config access.
 """
 
-from gi.repository import Gio
 from enum import IntEnum
+
+from gi.repository import Gio
 
 from . import APP_ID
 

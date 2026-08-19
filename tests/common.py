@@ -2,10 +2,12 @@
 Contains common test fixtures.
 """
 
-from src.backends.file import EartagFile, CoverType
-from src.utils.validation import get_mimetype_buffer
-import pytest
 import os
+
+import pytest
+
+from src.backends.file import CoverType, EartagFile
+from src.utils.validation import get_mimetype_buffer
 
 
 # Since we don't have a config in the tests, we have to simulate one

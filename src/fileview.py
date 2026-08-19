@@ -1,29 +1,28 @@
 # SPDX-License-Identifier: MIT
 # (c) 2023 knuxify and Ear Tag contributors
 
+import asyncio
+import mimetypes
+import os.path
+import traceback
+from collections.abc import Iterable
+from functools import cached_property
+
+from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk
+
+from . import APP_GRESOURCE_PATH
 from .backends import FILE_CLASSES
-from .backends.file import EartagFile, BASIC_TAGS, EXTRA_TAGS, TAG_NAMES, CoverType
+from .backends.file import BASIC_TAGS, EXTRA_TAGS, TAG_NAMES, CoverType, EartagFile
 from .logger import logger
-from .utils import get_readable_length, file_is_sandboxed
+from .tagentry import (  # noqa: F401
+    EartagTagEditableLabel,
+    EartagTagEntry,
+    EartagTagEntryManager,
+    EartagTagEntryRow,
+)
+from .utils import file_is_sandboxed, get_readable_length
 from .utils.validation import is_valid_image_file
 from .utils.widgets import EartagAlbumCoverImage, EartagPopoverButton  # noqa: F401
-from .tagentry import (  # noqa: F401
-    EartagTagEntryManager,
-    EartagTagEntry,
-    EartagTagEntryRow,
-    EartagTagEditableLabel,
-)
-from . import APP_GRESOURCE_PATH
-
-from gi.repository import Adw, Gtk, Gdk, Gio, GLib, GObject
-
-import asyncio
-from functools import cached_property
-import mimetypes
-import traceback
-import os.path
-
-from collections.abc import Iterable
 
 
 @Gtk.Template(resource_path=f"{APP_GRESOURCE_PATH}/ui/albumcoverbutton.ui")
