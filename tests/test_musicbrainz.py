@@ -6,14 +6,20 @@ import os
 
 import pytest
 
-from src.backends.file_mutagen_id3 import EartagFileMutagenID3
-from src.musicbrainz import (
+import src.config
+
+from .common import config
+
+src.config.config = config
+
+from src.backends.file_mutagen_id3 import EartagFileMutagenID3  # noqa: E402
+from src.musicbrainz import (  # noqa: E402
     MusicBrainzRecording,
     acoustid_identify_file,
     # 	make_request,
 )
 
-from .common import dummy_file  # noqa: F401
+from .common import dummy_file  # noqa: F401, E402
 
 NOT_FOUND_STR = "Could not find one of the required releases (did something move at MusicBrainz, or do we have no internet?)"  # noqa: E501
 
