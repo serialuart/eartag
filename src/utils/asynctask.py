@@ -6,6 +6,11 @@ import time
 import traceback
 from typing import Any, Awaitable, Callable
 
+try:
+    from asyncio.queues import Queue, QueueShutDown
+except ImportError:
+    from backports.asyncio.queues import Queue, QueueShutDown
+
 from gi.repository import GLib, GObject
 
 from .._async import event_loop
@@ -161,14 +166,10 @@ class EartagAsyncMultitasker(EartagAsyncTask):
     task-done is only emitted once all workers finish execution.
     """
 
-    # TODO: In the future (once Python 3.13 is actually wide-spread, so... maybe 2028?),
-    # this code could be made nicer with Queue.shutdown(). Until then, our manual locking
-    # code should do the job...
-
     def __init__(self, target: Callable[..., Awaitable[Any]], workers: int, *args, **kwargs):
         super().__init__(target, *args, **kwargs)
         assert target
-        self.queue = asyncio.Queue()
+        self.queue = Queue()
         self.queue_done_event = asyncio.Event()
         self.workers = workers
         self.tasks = set()
@@ -190,51 +191,39 @@ class EartagAsyncMultitasker(EartagAsyncTask):
         self.n_items = 0
         self.n_done = 0
 
-        self._queue_target = set()
-        self._queue_actual = set()
-
-    async def _worker_handle_item(self, item):
-        self._queue_actual.add(item)
-
-        try:
-            await self.target(item, *self.args, **self.kwargs)
-        except:  # noqa: E722
-            self.errors.append(
-                f"{self.target}: Error while processing {item}:\n\n{traceback.format_exc()}"
-            )
-            logger.error(self.errors[-1])
-            pass
-
-        self.n_done += 1
-        if self.queue_done_event.is_set():
-            _progress_task = event_loop.create_task(
-                self.set_progress_threadsafe(self.n_done / self.n_items)
-            )
-            try:
-                _progress_task.set_priority(GLib.PRIORITY_LOW)
-            except AttributeError:
-                # PyGObject <3.51.0 does not have set_priority
-                pass
-        else:
-            self.emit_progress_pulse()
-
     async def _worker(self):
         while True:
-            item = await self.queue_get()
-            if item is None:
+            try:
+                item = await self.queue.get()
+            except QueueShutDown:
                 break
-            await self._worker_handle_item(item)
+            try:
+                await self.target(item, *self.args, **self.kwargs)
+            except:  # noqa: E722
+                self.errors.append(
+                    f"{self.target}: Error while processing {item}:\n\n{traceback.format_exc()}"
+                )
+                logger.error(self.errors[-1])
+                pass
+
+            self.n_done += 1
+            if self.queue_done_event.is_set():
+                _progress_task = event_loop.create_task(
+                    self.set_progress_threadsafe(self.n_done / self.n_items)
+                )
+                try:
+                    _progress_task.set_priority(GLib.PRIORITY_LOW)
+                except AttributeError:
+                    # PyGObject <3.51.0 does not have set_priority
+                    pass
+            else:
+                self.emit_progress_pulse()
 
     async def _run_multitasker(self):
         async with self.running_lock:
-            self.n_items = 0
-            self.n_done = 0
-            self._queue_target = set()
-            self._queue_actual = set()
-            self.queue_done_event.clear()
-            self.clear_errors()
             self._is_running = True
             self.emit("task-started")
+
             async with asyncio.TaskGroup() as tg:
                 for _i in range(self.workers):
                     _task = tg.create_task(self._worker())
@@ -244,23 +233,18 @@ class EartagAsyncMultitasker(EartagAsyncTask):
                         # PyGObject <3.51.0 does not have set_priority
                         pass
                     self.tasks.add(_task)
+
             # The task group will block until all tasks are done
-
-            # FIXME: For some reason, it's possible for some items to not get
-            # picked up from the queue. In those cases, we manually iterate over
-            # the items that were missed.
-            # Ideally this should be investigated and fixed...
-            for item in self._queue_target - self._queue_actual:
-                await self._worker_handle_item(item)
-
-            self._queue_target.clear()
-            self._queue_actual.clear()
-            self.tasks.clear()
             self._is_running = False
             self.emit_task_done()
 
     def spawn_workers(self):
         """Start the task by spawning workers."""
+        self.n_items = 0
+        self.n_done = 0
+        self.queue = Queue()
+        self.queue_done_event.clear()
+        self.clear_errors()
         event_loop.create_task(self._run_multitasker())
 
     async def spawn_workers_async(self):
@@ -268,6 +252,11 @@ class EartagAsyncMultitasker(EartagAsyncTask):
         Version of spawn_workers for use with async functions (usually task
         groups).
         """
+        self.n_items = 0
+        self.n_done = 0
+        self.queue = Queue()
+        self.queue_done_event.clear()
+        self.clear_errors()
         await self._run_multitasker()
 
     def run(self):
@@ -283,7 +272,7 @@ class EartagAsyncMultitasker(EartagAsyncTask):
         self.tasks = set()
 
         self.queue_done_event.set()
-        self.queue_done_event.clear()
+        self.queue.shutdown(immediate=True)
 
     def wait_for_completion(self):
         while self.task and not self.task.done():
@@ -297,69 +286,22 @@ class EartagAsyncMultitasker(EartagAsyncTask):
     def is_running(self):
         return self._is_running
 
-    async def queue_get(self):
-        """
-        Wait for an item from the queue. Returns None if the queue is
-        done being filled.
-        """
-        # Queue has items and we can just return something
-        if not self.queue.empty():
-            return self.queue.get_nowait()
-
-        # Queue has no items, but it's done being filled, so we can return None
-        elif self.queue_done_event.is_set():
-            return None
-
-        # Queue has no items but it's not done being filled; wait for the next
-        # item or for the lock to be lifted
-        queue_get_task = event_loop.create_task(self.queue.get())
-        queue_done_task = event_loop.create_task(self.queue_done_event.wait())
-
-        ## Wait for either the queue to return a new item, or for the queue to be done
-        done, pending = await asyncio.wait(
-            (queue_get_task, queue_done_task), return_when=asyncio.FIRST_COMPLETED
-        )
-
-        ## If the queue is marked as done, then return None
-        if queue_done_task.done() and not queue_get_task.done():
-            return None
-
-        ## Otherwise get the item from the queue
-        return queue_get_task.result()
-
-    async def queue_put_async(self, item):
-        """Put an item in the queue."""
-        self._queue_target.add(item)
-        await self.queue.put(item)
-        self.n_items += 1
-
     def queue_put(self, item):
         """Put an item in the queue."""
-        event_loop.create_task(self.queue_put_async(item))
+        self.queue.put_nowait(item)
+        self.n_items += 1
 
-    async def queue_put_multiple_async(self, items, mark_as_done: bool = False):
+    def queue_put_multiple(self, items, mark_as_done: bool = False):
         """Put all items from the list in the queue."""
         for item in items:
-            await self.queue_put_async(item)
+            self.queue_put(item)
         if mark_as_done:
             self.queue_done()
 
-    def queue_put_multiple(self, items, mark_as_done: bool = False):
-        """
-        Put an item in the queue.
-
-        :param items: Iterable of items to put in the queue.
-        :param mark_as_done: Mark the queue as done once finished.
-        """
-        event_loop.create_task(self.queue_put_multiple_async(items, mark_as_done=mark_as_done))
-
     def queue_done(self):
-        """
-        Indicate to the workers that the queue is done being filled.
-
-        All currently blocked `queue_get` calls will be unblocked and return None.
-        """
+        """Indicate to the workers that the queue is done being filled."""
         self.queue_done_event.set()
+        self.queue.shutdown()
 
     def clear_errors(self):
         """Clear error information from the tasker."""

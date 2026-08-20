@@ -227,7 +227,7 @@ class EartagFileManager(GObject.Object):
         for path in paths:
             _stat = await aiofiles.os.stat(path)
             if stat.S_ISREG(_stat.st_mode):
-                await self.load_task.queue_put_async(path)
+                self.load_task.queue_put(path)
             elif stat.S_ISDIR(_stat.st_mode):
                 dirs.add(path)
 
@@ -247,7 +247,7 @@ class EartagFileManager(GObject.Object):
                     if stat.S_ISDIR(_stat.st_mode):
                         new_dirs.add(fpath)
                     elif stat.S_ISREG(_stat.st_mode) and await is_valid_music_file_async(fpath):
-                        await self.load_task.queue_put_async(fpath)
+                        self.load_task.queue_put(fpath)
 
             dirs = new_dirs
             depth += 1
