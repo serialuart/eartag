@@ -36,11 +36,12 @@ except ImportError:
 
 import acoustid
 
-try:
-    from . import ACOUSTID_API_KEY
-except ImportError:  # handle test suite import
+from . import TEST_SUITE
+
+if TEST_SUITE:  # handle test suite import
     from tests.common import ACOUSTID_API_KEY, config
 else:
+    from . import ACOUSTID_API_KEY
     from .config import config
 
 from .utils import simplify_string, title_case_preserve_uppercase

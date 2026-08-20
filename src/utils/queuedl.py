@@ -13,16 +13,17 @@ import aiohttp
 from aiohttp.client_exceptions import ClientConnectorError
 from aiohttp_retry import ExponentialRetry, RetryClient
 
+from .. import TEST_SUITE
 from ..logger import logger
 
-try:
+if not TEST_SUITE:
     from .. import VERSION
-except ImportError:  # handle test suite import
+
+    USER_AGENT = f"Ear Tag/{VERSION} (https://gitlab.gnome.org/World/eartag)"
+else:
     from tests.common import VERSION
 
     USER_AGENT = f"Ear Tag (Test suite)/{VERSION} (https://gitlab.gnome.org/World/eartag)"
-else:
-    USER_AGENT = f"Ear Tag/{VERSION} (https://gitlab.gnome.org/World/eartag)"
 
 
 CHUNK_SIZE = 1024 * 1024  # 1MB

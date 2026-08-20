@@ -5,6 +5,7 @@
 # eartag.in in the repo). These default values are provided for type checking
 # convenience.
 
+TEST_SUITE: bool = False
 ACOUSTID_API_KEY: str = ""
 APP_ID: str = "app.drey.EarTag"
 APP_GRESOURCE_PATH: str = "/app/drey/EarTag"
