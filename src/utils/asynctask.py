@@ -4,7 +4,7 @@
 import asyncio
 import time
 import traceback
-from typing import Coroutine
+from typing import Any, Awaitable, Callable
 
 from gi.repository import GLib, GObject
 
@@ -23,7 +23,7 @@ class EartagAsyncTask(GObject.Object):
     The passed target function must be an async function/coroutine.
     """
 
-    def __init__(self, target: Coroutine, *args, **kwargs):
+    def __init__(self, target: Callable[..., Awaitable[Any]], *args, **kwargs):
         super().__init__()
         self._progress = 0
         self.target = target
@@ -165,7 +165,7 @@ class EartagAsyncMultitasker(EartagAsyncTask):
     # this code could be made nicer with Queue.shutdown(). Until then, our manual locking
     # code should do the job...
 
-    def __init__(self, target: Coroutine, workers: int, *args, **kwargs):
+    def __init__(self, target: Callable[..., Awaitable[Any]], workers: int, *args, **kwargs):
         super().__init__(target, *args, **kwargs)
         assert target
         self.queue = asyncio.Queue()
