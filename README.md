@@ -34,6 +34,10 @@ Ear Tag is written in Python, and uses GTK4 and libadwaita for the UI. The follo
 - [aiofiles](https://pypi.org/project/aiofiles/) (used during file loading)
 - [xxhash](https://pypi.org/project/xxhash/) (used during album cover caching and comparisons)
 
+Additionally, the following package is required if your Python version is below 3.13:
+
+- [backports.asyncio.queues](https://pypi.org/project/backports.asyncio.queues) (used for some asyncio operations like file loading; we use the Queue.shutdown() method which was introduced in Python 3.13)
+
 The following packages are required to run tests:
 
 - appstreamcli
