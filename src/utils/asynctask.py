@@ -245,19 +245,7 @@ class EartagAsyncMultitasker(EartagAsyncTask):
         self.queue = Queue()
         self.queue_done_event.clear()
         self.clear_errors()
-        event_loop.create_task(self._run_multitasker())
-
-    async def spawn_workers_async(self):
-        """
-        Version of spawn_workers for use with async functions (usually task
-        groups).
-        """
-        self.n_items = 0
-        self.n_done = 0
-        self.queue = Queue()
-        self.queue_done_event.clear()
-        self.clear_errors()
-        await self._run_multitasker()
+        self.task = event_loop.create_task(self._run_multitasker())
 
     def run(self):
         """Compatibility shim, please use spawn_workers() instead."""
@@ -267,6 +255,9 @@ class EartagAsyncMultitasker(EartagAsyncTask):
         for task in self.tasks:
             if not task.done():
                 task.cancel()
+
+        while self._is_running:
+            time.sleep(0.1)
 
         del self.tasks
         self.tasks = set()
