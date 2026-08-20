@@ -10,18 +10,6 @@ from src.backends.file import CoverType, EartagFile
 from src.utils.validation import get_mimetype_buffer
 
 
-# Since we don't have a config in the tests, we have to simulate one
-class TestConfig(dict):
-    def get_enum(self, name):
-        if name == "musicbrainz-cover-size":
-            return 250
-
-
-config = TestConfig()
-config["acoustid-confidence-treshold"] = 85
-config["musicbrainz-confidence-treshold"] = 85
-
-
 def get_version_from_meson():
     # this is the worst possible way to do this
     meson_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "meson.build")

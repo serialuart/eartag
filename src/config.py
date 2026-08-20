@@ -6,9 +6,7 @@ from enum import IntEnum
 
 from gi.repository import Gio
 
-from . import APP_ID
-
-config = Gio.Settings.new(APP_ID)
+from . import APP_ID, TEST_SUITE
 
 
 class DLCoverSize(IntEnum):
@@ -47,3 +45,21 @@ class DLCoverSize(IntEnum):
         elif o == 2000:
             return 4
         raise ValueError
+
+
+class MockConfig(dict):
+    """Fake config-like class used by the test suite."""
+
+    def get_enum(self, name):
+        if name == "musicbrainz-cover-size":
+            return 250
+
+
+if TEST_SUITE:
+    # We need to use a fake config for the test suite, as the real config schema is not guaranteed
+    # to be available when running tests.
+    config = MockConfig()
+    config["acoustid-confidence-treshold"] = 85
+    config["musicbrainz-confidence-treshold"] = 85
+else:
+    config = Gio.Settings.new(APP_ID)
