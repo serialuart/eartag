@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eartag main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/eartag/-/issues\n"
-"POT-Creation-Date: 2025-02-28 21:00+0000\n"
-"PO-Revision-Date: 2025-03-02 17:53+0100\n"
+"POT-Creation-Date: 2026-08-20 16:14+0000\n"
+"PO-Revision-Date: 2026-10-31 10:17+0100\n"
 "Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <nb@li.org>\n"
 "Language: nb\n"
@@ -20,23 +20,23 @@ msgstr ""
 
 #. TRANSLATORS: If possible, do not translate the name of the program (Ear Tag). Transliteration (re-writing to fit another alphabet) is acceptable.
 #. Set up window title and file info label
-#: src/main.py:157 data/app.drey.EarTag.desktop.in:3
-#: data/app.drey.EarTag.metainfo.xml.in:4 src/window.py:104 src/window.py:248
-#: src/window.py:263 src/ui/window.blp:243 src/ui/nofile.blp:11
+#: src/main.py:145 data/app.drey.EarTag.desktop.in:2
+#: data/app.drey.EarTag.metainfo.xml.in:4 src/window.py:124 src/window.py:363
+#: src/window.py:375 src/ui/window.blp:262 src/ui/nofile.blp:11
 msgid "Ear Tag"
 msgstr "Ear Tag"
 
 #. TRANSLATORS: Add your name/nickname here
-#: src/main.py:167 src/main.py:169
+#: src/main.py:155 src/main.py:157
 msgid "translator-credits"
 msgstr "Brage Fuglseth https://bragefuglseth.dev"
 
-#: data/app.drey.EarTag.desktop.in:4
+#: data/app.drey.EarTag.desktop.in:3
 msgid "Tag Editor"
 msgstr "Lyddata"
 
 #. TRANSLATORS: App description.
-#: data/app.drey.EarTag.desktop.in:5 data/app.drey.EarTag.metainfo.xml.in:6
+#: data/app.drey.EarTag.desktop.in:4 data/app.drey.EarTag.metainfo.xml.in:6
 msgid "Edit audio file tags"
 msgstr "Rediger lyddata"
 
@@ -44,7 +44,7 @@ msgstr "Rediger lyddata"
 msgid "music;audio;tag;tagging;tagger;"
 msgstr "musikk;lyd;tagger;øremerke;MP3;WAV;M4A;FLAC;OGG;WMA;"
 
-#: data/app.drey.EarTag.metainfo.xml.in:97
+#: data/app.drey.EarTag.metainfo.xml.in:116
 msgid ""
 "Ear Tag is a simple audio file tag editor. It is primarily geared towards "
 "making quick edits or bulk-editing tracks in albums/EPs. Unlike other "
@@ -55,188 +55,221 @@ msgstr ""
 "raske endringer i metadataene til én låt så vel som å redigere et helt album "
 "på én gang:"
 
-#: data/app.drey.EarTag.metainfo.xml.in:99
+#: data/app.drey.EarTag.metainfo.xml.in:118
 msgid "Edit tags of MP3, WAV, M4A, FLAC, OGG and WMA files"
 msgstr "Rediger metadataene til MP3-, WAV-, M4A-, FLAC-, OGG-, og WMA-filer"
 
-#: data/app.drey.EarTag.metainfo.xml.in:100
+#: data/app.drey.EarTag.metainfo.xml.in:119
 msgid "Modify metadata of multiple files at once"
 msgstr "Jobb med flere filer på en gang"
 
-#: data/app.drey.EarTag.metainfo.xml.in:101
+#: data/app.drey.EarTag.metainfo.xml.in:120
 msgid "Rename files using information from present tags"
 msgstr "Endre filnavn ved bruk av eksisterende data"
 
-#: data/app.drey.EarTag.metainfo.xml.in:102
+#: data/app.drey.EarTag.metainfo.xml.in:121
 msgid "Identify files using AcoustID"
 msgstr "Gjenkjenn låter med AcoustID"
 
-#: data/app.drey.EarTag.metainfo.xml.in:104
+#: data/app.drey.EarTag.metainfo.xml.in:123
 msgid "Network access is only used for the \"Identify selected files\" option."
 msgstr "Rediger uten nett; nettilgang kreves bare til låtgjenkjenning."
 
-#: src/window.py:118
+#: src/window.py:140
 msgid "All supported audio files"
 msgstr "Alle støttede lydfiler"
 
-#: src/window.py:230
+#: src/window.py:305
+msgid "Some files failed to load"
+msgstr ""
+
+#: src/window.py:306
+msgid "More Information"
+msgstr "Mer informasjon"
+
+#: src/window.py:314
+msgid "No supported files found in opened folder"
+msgstr "Ingen støttede filer i åpnet mappe"
+
+#: src/window.py:321
+#, python-brace-format
+msgid "Saved changes to 1 file"
+msgid_plural "Saved changes to {n} files"
+msgstr[0] "Endringer lagret i 1 fil"
+msgstr[1] "Endringer lagret i {n} filer"
+
+#: src/window.py:330
+msgid "Some of the opened files are read-only; changes cannot be saved"
+msgstr "Lagring mislyktes: skrivebeskyttede filer"
+
+#: src/window.py:335
+msgid "Maximum folder depth reached, some files may not be loaded"
+msgstr ""
+
+#: src/window.py:346
 msgid "Unselect all files"
 msgstr "Fjern markering"
 
-#: src/window.py:233 src/ui/window.blp:208
+#: src/window.py:349 src/ui/window.blp:227
 msgid "Select all files"
 msgstr "Marker alt"
 
 #. TRANSLATORS: Placeholder for file path when multiple files are selected.
 #. Shows up in the titlebar of the application.
-#: src/window.py:272 src/fileview.py:774
+#: src/window.py:384 src/fileview.py:752
 msgid "(Multiple files selected)"
-msgstr "(Flere filer)"
+msgstr "(Flere filer valgt)"
 
-#: src/window.py:364 src/ui/nofile.blp:35
-msgid "Open Folder"
-msgstr "Åpne mappe"
-
-#: src/window.py:367 src/ui/nofile.blp:24
+#. : TRANSLATORS: Title of the popup for opening a file
+#: src/window.py:469 src/ui/nofile.blp:24
 msgid "Open File"
 msgstr "Åpne fil"
 
-#: src/window.py:438
-msgid "No supported files found in opened folder"
-msgstr "Ingen støttede filer i åpnet mappe"
+#: src/window.py:471
+msgid "Add File"
+msgstr "Legg til fil"
 
-#: src/window.py:447
+#: src/window.py:477 src/ui/nofile.blp:36
+msgid "Open Folder"
+msgstr "Åpne mappe"
+
+#: src/window.py:527
 msgid "Some of the opened files have invalid values; cannot save"
 msgstr "Lagring mislyktes: Noen åpne filer har ugyldige verdier"
 
-#: src/window.py:581
+#: src/window.py:657
 msgid "No files selected"
 msgstr "Ingen filer markert"
 
-#: src/window.py:587
+#: src/window.py:663
 #, python-brace-format
 msgid "1 file selected"
 msgid_plural "{n} files selected"
 msgstr[0] "1 fil markert"
 msgstr[1] "{n} filer markert"
 
-#: src/window.py:673
+#: src/window.py:736
 #, python-brace-format
 msgid "Undid changes in 1 file"
 msgid_plural "Undid changes in {n} files"
 msgstr[0] "1 fil tilbakestilt"
 msgstr[1] "{n} filer tilbakestilt"
 
-#: src/window.py:678
+#: src/window.py:741
 msgid "Redo"
 msgstr "Angre"
 
-#: src/window.py:709
+#: src/window.py:769
 #, python-brace-format
 msgid "Redid changes in 1 file"
 msgid_plural "Redid changes in {n} files"
 msgstr[0] "Endringer gjenopprettet i 1 fil"
 msgstr[1] "Endringer gjenopprettet i {n} filer"
 
-#: src/window.py:757
+#: src/window.py:815
 #, python-brace-format
 msgid "Removed tags from 1 file"
 msgid_plural "Removed tags from {n} files"
 msgstr[0] "Data fjernet fra 1 fil"
 msgstr[1] "Data fjernet fra {n} filer"
 
-#: src/window.py:762 src/fileview.py:308
+#: src/window.py:820 src/fileview.py:301
 msgid "Undo"
 msgstr "Angre"
 
-#: src/window.py:792
+#: src/window.py:846
 #, python-brace-format
 msgid "Undid tag removal in 1 file"
 msgid_plural "Undid tag removal in {n} files"
 msgstr[0] "Data gjenopprettet i 1 fil"
 msgstr[1] "Data gjenopprettet i {n} filer"
 
-#: src/ui/window.blp:64
+#: src/ui/window.blp:78
 msgid "Drop a file to add it to the opened file list"
 msgstr "Slipp filer for å legge dem til i listen"
 
-#: src/ui/window.blp:112
+#: src/ui/window.blp:106 src/ui/window.blp:147
+msgid "Menu"
+msgstr "Meny"
+
+#: src/ui/window.blp:127
 msgid "Save"
 msgstr "Lagre"
 
-#: src/ui/window.blp:124
+#: src/ui/window.blp:139
 msgid "Close file list"
 msgstr "Lukk liste"
 
-#: src/ui/window.blp:140
+#: src/ui/window.blp:156
 msgid "Add file"
 msgstr "Legg til fil"
 
-#: src/ui/window.blp:146
+#: src/ui/window.blp:162
 msgid "Select multiple files"
 msgstr "Marker flere filer"
 
-#: src/ui/window.blp:152
+#: src/ui/window.blp:168
 msgid "Search opened files"
 msgstr "Søk etter åpne filer"
 
-#: src/ui/window.blp:194
+#. TRANSLATORS: Search entry placeholder for "Search opened files" option
+#: src/ui/window.blp:179 src/ui/previewselectorbutton.blp:25
+msgid "Search by title, artist, filename…"
+msgstr "Søk etter tittel, artist eller filnavn …"
+
+#: src/ui/window.blp:213
 msgid "No Results Found"
 msgstr "Ingen treff"
 
-#: src/ui/window.blp:195
+#: src/ui/window.blp:214
 msgid "Try a different search query."
 msgstr "Prøv et annet søk."
 
-#: src/ui/window.blp:222
+#: src/ui/window.blp:241
 msgid "Remove selected files"
 msgstr "Fjern markerte filer"
 
-#: src/ui/window.blp:236
+#: src/ui/window.blp:255
 msgid "Show file list"
 msgstr "Vis liste"
 
-#: src/ui/window.blp:258
+#: src/ui/window.blp:277
 msgid "_Open File"
 msgstr "Åpne _fil"
 
-#: src/ui/window.blp:263
+#: src/ui/window.blp:282
 msgid "O_pen Folder"
 msgstr "Åpne _mappe"
 
-#: src/ui/window.blp:270
-msgid "_Sort File List"
-msgstr "_Sorter filer"
-
-#: src/ui/window.blp:277
+#: src/ui/window.blp:289
 msgid "_Rename Selected Files"
 msgstr "_Endre navn på markerte filer"
 
-#: src/ui/window.blp:282
+#: src/ui/window.blp:294
 msgid "_Extract Tags from Filename"
 msgstr "_Hent data fra filnavn"
 
-#: src/ui/window.blp:287
+#: src/ui/window.blp:299
 msgid "_Identify Selected Files"
 msgstr "_Gjenkjenn låter"
 
-#: src/ui/window.blp:294
+#: src/ui/window.blp:306
 msgid "_Undo Changes in Selected Files"
 msgstr "Tilb_akestill markerte filer"
 
-#: src/ui/window.blp:299
+#: src/ui/window.blp:311
 msgid "_Remove All Tags in Selected Files"
 msgstr "Fjern _data fra markerte filer"
 
-#: src/ui/window.blp:306
+#: src/ui/window.blp:318
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastatursnarveier"
 
-#: src/ui/window.blp:311
+#: src/ui/window.blp:323
 msgid "_Preferences"
 msgstr "_Innstillinger"
 
-#: src/ui/window.blp:316
+#: src/ui/window.blp:328
 msgid "_About Ear Tag"
 msgstr "_Om Ear Tag"
 
@@ -244,204 +277,212 @@ msgstr "_Om Ear Tag"
 msgid "Open or drag in some audio files to edit their metadata."
 msgstr "Åpne eller slipp filer her for å redigere metadataene deres."
 
-#: src/filemanager.py:150
-msgid "Saved changes to files"
-msgstr "Endringer lagret"
+#: src/ui/nofile.blp:46
+msgid "Include Files from Subfolders"
+msgstr ""
 
-#: src/filemanager.py:256
-msgid "Opened file is read-only; changes cannot be saved"
-msgstr "Lagring mislyktes: skrivebeskyttet fil"
+#: src/ui/nofile.blp:47 src/ui/settings.blp:11
+msgid "When opening a folder, include files from its subfolders"
+msgstr ""
 
-#: src/filemanager.py:259
-msgid "Some of the opened files are read-only; changes cannot be saved"
-msgstr "Lagring mislyktes: skrivebeskyttede filer"
-
-#: src/backends/file.py:53
+#: src/backends/file.py:61
 msgid "Length"
 msgstr "Lengde"
 
-#: src/backends/file.py:54
+#: src/backends/file.py:62
 msgid "Bitrate"
 msgstr "Bitrate"
 
-#: src/backends/file.py:56 src/ui/fileview.blp:95
+#: src/backends/file.py:64 src/ui/fileview.blp:90
 msgid "Title"
 msgstr "Tittel"
 
-#: src/backends/file.py:57 src/ui/fileview.blp:127
+#: src/backends/file.py:65 src/ui/fileview.blp:101
 msgid "Artist"
 msgstr "Artist"
 
-#: src/backends/file.py:58 src/ui/fileview.blp:210
+#: src/backends/file.py:66 src/ui/fileview.blp:169
 msgid "Album"
 msgstr "Album"
 
-#: src/backends/file.py:59 src/ui/fileview.blp:215
+#: src/backends/file.py:67 src/ui/fileview.blp:174
 msgid "Album artist"
 msgstr "Albumartist"
 
-#: src/backends/file.py:60 src/ui/fileview.blp:174
+#: src/backends/file.py:68 src/ui/fileview.blp:133
 msgid "Track number"
 msgstr "Låtnummer"
 
-#: src/backends/file.py:61 src/ui/fileview.blp:187
+#: src/backends/file.py:69 src/ui/fileview.blp:146
 msgid "Total tracks"
 msgstr "Antall låter"
 
-#: src/backends/file.py:62 src/ui/fileview.blp:220
+#: src/backends/file.py:70 src/ui/fileview.blp:179
 msgid "Genre"
 msgstr "Sjanger"
 
-#: src/backends/file.py:63 src/ui/fileview.blp:225
+#: src/backends/file.py:71 src/ui/fileview.blp:184
 msgid "Release date"
 msgstr "Utgitt"
 
-#: src/backends/file.py:64 src/ui/fileview.blp:231
+#: src/backends/file.py:72 src/ui/fileview.blp:190
 msgid "Comment"
 msgstr "Kommentar"
 
-#: src/backends/file.py:66
+#: src/backends/file.py:74
 msgid "(Select a tag)"
 msgstr "(Velg en egenskap)"
 
 #. TRANSLATORS: Short for "beats per minute".
-#: src/backends/file.py:68
+#: src/backends/file.py:76
 msgid "BPM"
 msgstr "BPM"
 
-#: src/backends/file.py:69
+#: src/backends/file.py:77
 msgid "Compilation"
 msgstr "Samling"
 
-#: src/backends/file.py:70
+#: src/backends/file.py:78
 msgid "Composer"
 msgstr "Komponist"
 
-#: src/backends/file.py:71
+#: src/backends/file.py:79
 msgid "Copyright"
 msgstr "Opphavsrett"
 
-#: src/backends/file.py:72
+#: src/backends/file.py:80
 msgid "Encoded by"
 msgstr "Kodet av"
 
-#: src/backends/file.py:73
+#: src/backends/file.py:81
 msgid "Mood"
 msgstr "Humør"
 
 #. TRANSLATORS: Orchestra conductor
-#: src/backends/file.py:75
+#: src/backends/file.py:83
 msgid "Conductor"
 msgstr "Dirigent"
 
-#: src/backends/file.py:76
+#: src/backends/file.py:84
 msgid "Arranger"
 msgstr "Arrangør"
 
-#: src/backends/file.py:77
+#: src/backends/file.py:85
 msgid "Disc number"
 msgstr "Platenummer"
 
-#: src/backends/file.py:78
+#: src/backends/file.py:86
 msgid "Publisher"
 msgstr "Utgiver"
 
-#: src/backends/file.py:80
+#: src/backends/file.py:88
 msgid "Language"
 msgstr "Språk"
 
-#: src/backends/file.py:81
+#: src/backends/file.py:89
 msgid "Disc subtitle"
 msgstr "Undertekst"
 
-#: src/backends/file.py:82
+#: src/backends/file.py:90
 msgid "Website/URL"
 msgstr "Nettadresse"
 
 #. TRANSLATORS: This is a sort tag, as in, a tag that dictates how music
 #. software should treat this tag when sorting.
-#: src/backends/file.py:86
+#: src/backends/file.py:94
 msgid "Album artist (sort)"
 msgstr "Albumartist (sortering)"
 
 #. TRANSLATORS: This is a sort tag, as in, a tag that dictates how music
 #. software should treat this tag when sorting.
-#: src/backends/file.py:89
+#: src/backends/file.py:97
 msgid "Album (sort)"
 msgstr "Album (sortering)"
 
 #. TRANSLATORS: This is a sort tag, as in, a tag that dictates how music
 #. software should treat this tag when sorting.
-#: src/backends/file.py:92
+#: src/backends/file.py:100
 msgid "Composer (sort)"
 msgstr "Komponist (sortering)"
 
 #. TRANSLATORS: This is a sort tag, as in, a tag that dictates how music
 #. software should treat this tag when sorting.
-#: src/backends/file.py:95
+#: src/backends/file.py:103
 msgid "Artist (sort)"
 msgstr "Artist (sortering)"
 
 #. TRANSLATORS: This is a sort tag, as in, a tag that dictates how music
 #. software should treat this tag when sorting.
-#: src/backends/file.py:98
+#: src/backends/file.py:106
 msgid "Title (sort)"
 msgstr "Tittel (sortering)"
 
-#: src/backends/file.py:100
+#: src/backends/file.py:108
 msgid "MusicBrainz Artist ID"
 msgstr "Artist-ID på MusicBrainz"
 
-#: src/backends/file.py:101
+#: src/backends/file.py:109
 msgid "MusicBrainz Album ID"
 msgstr "Album-ID på MusicBrainz"
 
-#: src/backends/file.py:102
+#: src/backends/file.py:110
 msgid "MusicBrainz Album Artist ID"
 msgstr "Albumartist-ID på MusicBrainz"
 
-#: src/backends/file.py:103
+#: src/backends/file.py:111
 msgid "MusicBrainz Release Track ID"
 msgstr "Utgivelsesspor-ID på MusicBrainz"
 
-#: src/backends/file.py:104
+#: src/backends/file.py:112
 msgid "MusicBrainz Recording ID"
 msgstr "Opptaks-ID på MusicBrainz"
 
-#: src/backends/file.py:105
+#: src/backends/file.py:113
 msgid "MusicBrainz Release Group ID"
 msgstr "Utgivelsesgruppe-ID på MusicBrainz"
 
-#: src/fileview.py:196
+#: src/fileview.py:109
+msgid "Album cover (front)"
+msgstr "Omslagsbilde (front)"
+
+#: src/fileview.py:111
+msgid "Album cover (back)"
+msgstr "Omslagsbilde (bakside)"
+
+#: src/fileview.py:206
 msgid "Select Album Cover Image"
 msgstr "Velg omslagsbilde"
 
 #: src/fileview.py:247
 msgid "Save Album Cover To…"
-msgstr "Lagre omslagsbilde…"
+msgstr "Lagre omslagsbilde til …"
 
 #. TRANSLATORS: {path} is a placeholder for the path.
 #. **Do not change the text between the curly brackets!**
-#: src/fileview.py:280
+#: src/fileview.py:274
 #, python-brace-format
 msgid "Saved cover to {path}"
 msgstr "Omslagsbilde lagret som {path}"
 
-#: src/fileview.py:305
+#: src/fileview.py:298
 #, python-brace-format
 msgid "Removed cover from file"
 msgid_plural "Removed covers from {n} files"
 msgstr[0] "Omslagsbilde fjernet fra 1 fil"
 msgstr[1] "Omslagsbilde fjernet fra {n} filer"
 
-#: src/fileview.py:788
+#: src/fileview.py:411
+msgid "Remove tag"
+msgstr "Fjern etikett"
+
+#: src/fileview.py:766
 #, python-brace-format
 msgid "1 channel"
 msgid_plural "{n} channels"
 msgstr[0] "1 kanal"
 msgstr[1] "{n} kanaler"
 
-#: src/fileview.py:833
+#: src/fileview.py:812
 msgid "(multiple files)"
 msgstr "(flere filer)"
 
@@ -469,27 +510,27 @@ msgstr "Neste fil"
 msgid "Filename"
 msgstr "Filnavn"
 
-#: src/ui/albumcoverbutton.blp:71
+#: src/ui/albumcoverbutton.blp:73
 msgid "_Choose Image…"
 msgstr "_Velg bilde…"
 
-#: src/ui/albumcoverbutton.blp:77
+#: src/ui/albumcoverbutton.blp:79
 msgid "_Save Image…"
 msgstr "_Lagre bilde…"
 
-#: src/ui/albumcoverbutton.blp:83
+#: src/ui/albumcoverbutton.blp:85
 msgid "_Remove Cover"
 msgstr "_Fjern bilde"
 
-#: src/ui/albumcoverbutton.blp:109
+#: src/ui/albumcoverbutton.blp:111
 msgid "Front"
 msgstr "Foran"
 
-#: src/ui/albumcoverbutton.blp:114
+#: src/ui/albumcoverbutton.blp:116
 msgid "Back"
 msgstr "Bak"
 
-#: src/ui/albumcoverbutton.blp:120
+#: src/ui/albumcoverbutton.blp:122
 msgid "All supported image files"
 msgstr "Alle støttede bildefiler"
 
@@ -497,12 +538,12 @@ msgstr "Alle støttede bildefiler"
 msgid "Add tag"
 msgstr "Legg til felt"
 
-#: src/tagentry.py:128
+#: src/tagentry.py:213
 msgid "(multiple values)"
 msgstr "(flere verdier)"
 
 #. TRANSLATORS: Placeholder for file sidebar items with no title set
-#: src/filelist.py:171
+#: src/filelist.py:192
 msgid "(No title)"
 msgstr "(Uten tittel)"
 
@@ -514,9 +555,51 @@ msgstr "Filen har ugyldige verdier"
 msgid "File has unsaved changes"
 msgstr "Filen har ulagrede endringer"
 
-#: src/ui/filelistitem.blp:92
+#: src/ui/filelistitem.blp:84
 msgid "Remove from list"
 msgstr "Fjern fra liste"
+
+#: src/dialogs.py:115
+msgid "Failed to Load Files"
+msgstr "Klarte ikke å laste filer"
+
+#: src/dialogs.py:116
+msgid "Some files could not be loaded."
+msgstr "Noen filer kunne ikke lastes."
+
+#: src/dialogs.py:119
+msgid "Failed to Rename Files"
+msgstr "Klarte ikke å endre navn på filer"
+
+#: src/dialogs.py:120
+msgid "Some files could not be renamed."
+msgstr "Noen filer kunne ikke endres navn på."
+
+#: src/dialogs.py:123
+msgid "Failed to Save Files"
+msgstr "Klarte ikke å lagre"
+
+#: src/dialogs.py:124
+msgid "Some files could not be saved."
+msgstr "Noen filer kunne ikke lagres."
+
+#: src/dialogs.py:127
+msgid "An Error Has Occured"
+msgstr "En feil har oppstått"
+
+#: src/dialogs.py:128
+msgid "An internal error has occured."
+msgstr "En intern feil har oppstått."
+
+#: src/dialogs.py:134
+msgid ""
+"Please copy the logs below and <a href=\"https://gitlab.gnome.org/World/"
+"eartag/-/issues/new\">submit an issue report</a>."
+msgstr ""
+
+#: src/dialogs.py:148
+msgid "Copied error log to clipboard"
+msgstr ""
 
 #: src/ui/dialogs/closewarning.blp:5 src/ui/dialogs/discardwarning.blp:5
 #: src/ui/dialogs/removaldiscardwarning.blp:5
@@ -622,18 +705,18 @@ msgstr "Uten tittel"
 msgid "Unknown {tag_name}"
 msgstr "Ukjent verdi i «{tag_name}»"
 
-#: src/rename.py:287
+#: src/rename.py:272
 msgid "Selected folder does not exist"
 msgstr "Mappen finnes ikke"
 
-#: src/rename.py:294
+#: src/rename.py:277
 msgid "Selected folder is read-only"
 msgstr "Mappen er skrivebeskyttet"
 
 #. TRANSLATORS: {renamed} is a placeholder for the number
 #. of tracks the tags were succesfully extracted for.
 #. **Do not translate the text between the curly brackets!**
-#: src/rename.py:385
+#: src/rename.py:364
 #, python-brace-format
 msgid "Renamed 1 file"
 msgid_plural "Renamed {renamed} files"
@@ -644,7 +727,7 @@ msgstr[1] "Navn endret på {renamed} filer"
 msgid "Rename Selected Files"
 msgstr "Endre navn på markerte filer"
 
-#: src/ui/rename.blp:17 src/ui/extract.blp:17 src/ui/identify/identify.blp:26
+#: src/ui/rename.blp:17 src/ui/extract.blp:17 src/ui/identify/identify.blp:27
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -690,18 +773,18 @@ msgstr "Fjern mappe"
 
 #: src/ui/rename.blp:148
 msgid ""
-"For a list of available placeholders, see the <a href=\"https://gitlab.gnome."
-"org/World/eartag/-/blob/main/src/backends/README.md#available-tags\">list of "
-"available tags</a>."
+"For a list of available placeholders, see the <a href=\"https://"
+"gitlab.gnome.org/World/eartag/-/blob/main/src/backends/README.md#available-"
+"tags\">list of available tags</a>."
 msgstr ""
-"For en liste over tilgjengelige navneelementer, se <a href=\"https://gitlab."
-"gnome.org/World/eartag/-/blob/main/src/backends/README.md#available-"
+"For en liste over tilgjengelige navneelementer, se <a href=\"https://"
+"gitlab.gnome.org/World/eartag/-/blob/main/src/backends/README.md#available-"
 "tags\">listen over egenskaper</a>."
 
 #. TRANSLATORS: {extracted} is a placeholder for the number
 #. of tracks the tags were succesfully extracted for.
 #. **Do not translate the text between the curly brackets!**
-#: src/extract.py:288
+#: src/extract.py:242
 #, python-brace-format
 msgid "Extracted tags for 1 track"
 msgid_plural "Extracted tags for {extracted} tracks"
@@ -712,7 +795,8 @@ msgstr[1] "Metadata hentet ut til {extracted} filer"
 msgid "Extract Tags from Filename"
 msgstr "Hent ut data fra filnavn"
 
-#: src/ui/extract.blp:24 src/ui/identify/identify.blp:44
+#: src/ui/extract.blp:24 src/ui/identify/identify.blp:45
+#: src/ui/identify/filerow.blp:44 src/ui/identify/recordingrow.blp:53
 msgid "Apply"
 msgstr "Bruk"
 
@@ -732,57 +816,103 @@ msgstr ""
 msgid "Select file to preview"
 msgstr "Velg fil til forhåndsvisning"
 
+#: src/identify.py:96 src/ui/identify/recordingrow.blp:15
+msgid "Apply identified data"
+msgstr ""
+
+#. TRANSLATORS: Tooltip for button to open release info in MusicBrainz identification dialog.
+#: src/identify.py:137
+msgid "See release on MusicBrainz"
+msgstr ""
+
 #. TRANSLATORS: Tooltip for release switcher button in MusicBrainz identification dialog.
 #. This allows the user to switch between different releases of an album, EP, etc.
-#: src/identify.py:125
+#: src/identify.py:149
 msgid "Other releases"
 msgstr "Andre utgivelser"
 
-#: src/identify.py:524
+#: src/identify.py:713
 msgid "Unidentified Files"
 msgstr "Ukjente låter"
 
 #. TRANSLATORS: {identified} is a placeholder for the number
 #. of tracks that were succesfully identified.
 #. **Do not translate the text between the curly brackets!**
-#: src/identify.py:970
+#: src/identify.py:986
 #, python-brace-format
 msgid "Identified 1 track"
 msgid_plural "Identified {identified} tracks"
 msgstr[0] "Gjenkjente 1 låt"
 msgstr[1] "Gjenkjente {identified} låter"
 
+#. TRANSLATORS: {n} is a placeholder for the number
+#. of tracks that were succesfully identified.
+#. **Do not translate the text between the curly brackets!**
+#: src/identify.py:1054
+#, python-brace-format
+msgid "Applied changes to 1 track"
+msgid_plural "Applied changes to {n} tracks"
+msgstr[0] ""
+msgstr[1] ""
+
 #: src/ui/identify/identify.blp:5
 msgid "Identify Selected Files"
 msgstr "Gjenkjenn markerte filer"
 
-#: src/ui/identify/identify.blp:34
+#: src/ui/identify/identify.blp:35
 msgid "Identify"
 msgstr "Gjenkjenn"
 
-#: src/ui/identify/identify.blp:71
+#: src/ui/identify/identify.blp:72
 msgid ""
-"Track information is provided by <a href=\"https://musicbrainz."
-"org\">Musicbrainz</a>. Files without metadata are identified using the <a "
-"href=\"https://acoustid.org\">AcoustID</a> service."
+"Track information is provided by <a href=\"https://"
+"musicbrainz.org\">Musicbrainz</a>. Files without metadata are identified "
+"using the <a href=\"https://acoustid.org\">AcoustID</a> service."
 msgstr ""
 "Låtinformasjon hentes fra <a href=\"https://musicbrainz.org\">Musicbrainz</"
-"a>. Filer uten metadata gjenkjennes med <a href=\"https://acoustid."
-"org\">AcoustID</a>."
+"a>. Filer uten metadata gjenkjennes med <a href=\"https://"
+"acoustid.org\">AcoustID</a>."
 
-#: src/ui/identify/filerow.blp:22
+#: src/ui/identify/filerow.blp:19 src/ui/identify/recordingrow.blp:28
+msgid "Set recording manually"
+msgstr ""
+
+#: src/ui/identify/filerow.blp:30 src/ui/identify/recordingrow.blp:39
+msgid ""
+"Search for the track on <a href=\"https://musicbrainz.org/\">MusicBrainz</"
+"a>, then paste the MusicBrainz ID or a link to the MusicBrainz recording "
+"page here."
+msgstr ""
+
+#: src/ui/identify/filerow.blp:37 src/ui/identify/recordingrow.blp:46
+msgid "Recording ID or URL"
+msgstr ""
+
+#: src/ui/identify/filerow.blp:67
 msgid "File could not be identified"
 msgstr "Gjenkjenning mislyktes"
 
+#: src/ui/identify/recordingrow.blp:72
+msgid "See recording on MusicBrainz"
+msgstr ""
+
 #: src/ui/settings.blp:7
+msgid "General"
+msgstr "Generelt"
+
+#: src/ui/settings.blp:10
+msgid "Search for files in subfolders"
+msgstr ""
+
+#: src/ui/settings.blp:16
 msgid "File identification"
 msgstr "Gjenkjenning"
 
-#: src/ui/settings.blp:10
+#: src/ui/settings.blp:19
 msgid "MusicBrainz confidence treshold"
 msgstr "MusicBrainz-nøyaktighetsgrense"
 
-#: src/ui/settings.blp:11
+#: src/ui/settings.blp:20
 msgid ""
 "Minimum confidence percentage required for a MusicBrainz search result to be "
 "evaluated"
@@ -790,11 +920,11 @@ msgstr ""
 "Laveste antall nøyaktighetsprosent på et MusicBrainz-treff for at det skal "
 "kunne brukes"
 
-#: src/ui/settings.blp:23
+#: src/ui/settings.blp:32
 msgid "AcoustID confidence treshold"
 msgstr "AcoustID-nøyaktighetsgrense"
 
-#: src/ui/settings.blp:24
+#: src/ui/settings.blp:33
 msgid ""
 "Minimum confidence percentage required for an AcoustID lookup result to be "
 "evaluated"
@@ -802,86 +932,86 @@ msgstr ""
 "Laveste antall nøyaktighetsprosent på et AcoustID-treff for at det skal "
 "kunne brukes"
 
-#: src/ui/settings.blp:36
+#: src/ui/settings.blp:45
 msgid "Downloaded cover art size"
 msgstr "Størrelse på omslagsbilde"
 
-#: src/ui/settings.blp:40
+#: src/ui/settings.blp:49
 msgid "Do not download covers"
 msgstr "Ikke last ned"
 
-#: src/ui/settings.blp:41
+#: src/ui/settings.blp:50
 msgid "250 px"
 msgstr "250×250"
 
-#: src/ui/settings.blp:42
+#: src/ui/settings.blp:51
 msgid "500 px"
 msgstr "500×500"
 
-#: src/ui/settings.blp:43
+#: src/ui/settings.blp:52
 msgid "1200 px"
 msgstr "1200×1200"
 
-#: src/ui/settings.blp:44
+#: src/ui/settings.blp:53
 msgid "Maximum size"
 msgstr "Full størrelse"
 
-#: src/ui/shortcuts.blp:11
+#: src/ui/shortcuts.blp:6
 msgctxt "shortcut window"
 msgid "Files"
 msgstr "Filer"
 
-#: src/ui/shortcuts.blp:15
+#: src/ui/shortcuts.blp:10
 msgctxt "shortcut window"
 msgid "Open files"
 msgstr "Åpne filer"
 
-#: src/ui/shortcuts.blp:20
+#: src/ui/shortcuts.blp:15
 msgctxt "shortcut window"
 msgid "Open folder"
 msgstr "Åpne mappe"
 
-#: src/ui/shortcuts.blp:25
+#: src/ui/shortcuts.blp:20
 msgctxt "shortcut window"
 msgid "Save all modified files"
 msgstr "Lagre alle endringer"
 
-#: src/ui/shortcuts.blp:30
+#: src/ui/shortcuts.blp:25
 msgctxt "shortcut window"
 msgid "Sidebar"
 msgstr "Liste"
 
-#: src/ui/shortcuts.blp:34
+#: src/ui/shortcuts.blp:29
 msgctxt "shortcut window"
 msgid "Select previous file in sidebar"
 msgstr "Gå til forrige fil"
 
-#: src/ui/shortcuts.blp:39
+#: src/ui/shortcuts.blp:34
 msgctxt "shortcut window"
 msgid "Select next file in sidebar"
 msgstr "Gå til neste fil"
 
-#: src/ui/shortcuts.blp:44
+#: src/ui/shortcuts.blp:39
 msgctxt "shortcut window"
 msgid "Select all files in sidebar"
 msgstr "Marker alt"
 
-#: src/ui/shortcuts.blp:49
+#: src/ui/shortcuts.blp:44
 msgctxt "shortcut window"
 msgid "Remove selected files from sidebar"
 msgstr "Fjern markerte filer"
 
-#: src/ui/shortcuts.blp:50
+#: src/ui/shortcuts.blp:45
 msgctxt "shortcut window"
 msgid "Closes the window if no files are present."
 msgstr "Appen vil lukkes hvis det ikke er flere igjen."
 
-#: src/ui/shortcuts.blp:55
+#: src/ui/shortcuts.blp:50
 msgctxt "shortcut window"
 msgid "Other"
 msgstr "Annet"
 
-#: src/ui/shortcuts.blp:59
+#: src/ui/shortcuts.blp:54
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Tastatursnarveier"
